@@ -1,0 +1,137 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../../../assets/luis-coelho-ramos-portrait.jpg";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import { site } from "../../../config/site";
+
+const description =
+  "Sobre Luis Coelho Ramos: fundador e co-CEO do PedeAqui, responsável pela estratégia internacional do ICTQ Foton e autor na interseção entre ciência, tecnologia e negócios.";
+---
+
+<BaseLayout
+  lang="pt-BR"
+  title={`Sobre — ${site.publicName}`}
+  description={description}
+  alternatePath="/about/"
+>
+  <SiteHeader lang="pt-BR" alternatePath="/about/" current="about" />
+  <main id="content" class="shell about-page">
+    <section class="about-hero" aria-labelledby="about-title">
+      <div class="about-heading">
+        <p class="eyebrow">Sobre · Luis Coelho Ramos</p>
+        <h1 id="about-title">Trabalhando entre disciplinas, instituições e lugares.</h1>
+        <p class="intro">
+          Sou fundador e co-CEO do PedeAqui e Vice-Presidente de Estratégia e Parcerias Internacionais do ICTQ Foton.
+          Meu trabalho começa onde a tecnologia emergente precisa se tornar útil para pessoas e organizações.
+        </p>
+      </div>
+      <figure class="about-portrait">
+        <Image
+          src={portrait}
+          alt="Retrato de Luis Coelho Ramos usando terno escuro e gravata azul, sorrindo diante de um fundo cinza."
+          widths={[480, 720, 1023]}
+          sizes="(max-width: 680px) 88vw, 34vw"
+          loading="eager"
+        />
+        <figcaption>Ciência · Execução · Cooperação internacional</figcaption>
+      </figure>
+    </section>
+
+    <div class="about-story">
+      <section class="about-section" aria-labelledby="about-now">
+        <p class="about-section-label">01 · Atuação atual</p>
+        <div>
+          <h2 id="about-now">Construir no presente sem perder de vista o que vem depois.</h2>
+          <div class="about-copy">
+            <p>
+              No PedeAqui, colidero o desenvolvimento de uma plataforma de IA para operações de restaurantes,
+              atuando em produto, evolução técnica, estratégia e validação comercial.
+            </p>
+            <p>
+              No ICTQ Foton, lidero iniciativas de cooperação científica, posicionamento internacional,
+              financiamento e aproximação entre tecnologias quânticas, ecossistemas e mercados globais.
+            </p>
+          </div>
+          <a class="about-link" href="/pt/atuacao/">Conheça minha atuação <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="about-method">
+        <p class="about-section-label">02 · Fundamento científico</p>
+        <div>
+          <h2 id="about-method">O método veio antes do posicionamento.</h2>
+          <div class="about-copy">
+            <p>
+              Minha formação em Física e a iniciação científica na UFRGS me aproximaram da física computacional, da
+              mecânica estatística, da programação e da disciplina de testar hipóteses diante das evidências.
+            </p>
+            <p>
+              Essa base ainda orienta como analiso sistemas, trabalho com incerteza e abordo questões atuais em
+              criptografia pós-quântica e tecnologias emergentes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="about-contexts">
+        <p class="about-section-label">03 · Perspectiva internacional</p>
+        <div>
+          <h2 id="about-contexts">Mudar de contexto muda as perguntas.</h2>
+          <div class="about-copy">
+            <p>
+              Experiências acadêmicas e profissionais na Rússia, em Portugal e no Japão me colocaram diante de formas
+              diferentes de organizar o trabalho, a educação, as instituições e a vida cotidiana.
+            </p>
+            <p>
+              Elas tornaram a cooperação internacional algo prático, não abstrato: é preciso escutar com atenção,
+              traduzir contextos e construir confiança entre expectativas diferentes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="about-publication">
+        <p class="about-section-label">04 · Esta publicação</p>
+        <div>
+          <h2 id="about-publication">Um registro do trabalho e do pensamento em construção.</h2>
+          <div class="about-copy">
+            <p>
+              Fronteira Aplicada é o espaço onde examino a distância entre possibilidade científica e decisão prática.
+              Não é um canal empresarial nem um portfólio convencional.
+            </p>
+            <p>
+              Escrevo para tornar temas complexos mais claros, documentar o que a execução ensina e separar sinais
+              duradouros do ruído tecnológico.
+            </p>
+          </div>
+          <a class="about-link" href="/pt/notas/">Ler as notas <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </div>
+
+    <section class="about-principles" aria-labelledby="principles-title">
+      <header>
+        <p class="eyebrow">Como trabalho</p>
+        <h2 id="principles-title">Três princípios de trabalho.</h2>
+      </header>
+      <div>
+        <article>
+          <span>01</span>
+          <h3>Evidência antes da certeza</h3>
+          <p>Separar o que sabemos, o que inferimos e o que ainda é incerto.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>A execução testa as ideias</h3>
+          <p>Restrições reais revelam o que um conceito convincente deixa de fora.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Curiosidade precisa de foco</h3>
+          <p>A exploração se torna útil quando produz trabalho consistente.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

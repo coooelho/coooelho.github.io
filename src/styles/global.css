@@ -565,6 +565,164 @@ h1 {
   font-size: 1.2rem;
 }
 
+.about-page {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+}
+
+.about-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  align-items: center;
+  gap: clamp(3rem, 7vw, 7rem);
+}
+
+.about-heading h1 {
+  font-size: clamp(3.4rem, 6.7vw, 6rem);
+}
+
+.about-portrait {
+  position: relative;
+  margin: 0;
+}
+
+.about-portrait::before {
+  position: absolute;
+  z-index: -1;
+  inset: -1.2rem 1.2rem 2.8rem -1.2rem;
+  border: 1px solid var(--cobalt);
+  content: "";
+}
+
+.about-portrait img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: saturate(0.9) contrast(1.02);
+}
+
+.about-portrait figcaption {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.about-story {
+  margin-top: clamp(5rem, 11vw, 10rem);
+  border-top: 1px solid var(--ink);
+}
+
+.about-section {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.3fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-block: clamp(3rem, 6vw, 5rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.about-section-label {
+  margin: 0;
+  color: var(--cobalt);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.about-section h2 {
+  max-width: 820px;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.about-copy {
+  max-width: 820px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.about-copy p {
+  margin: 0;
+  color: #3f4542;
+}
+
+.about-link {
+  display: inline-flex;
+  gap: 0.4rem;
+  margin-top: 2rem;
+  color: var(--cobalt);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.about-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.about-principles {
+  margin-top: clamp(5rem, 10vw, 8rem);
+  padding: clamp(2rem, 5vw, 4rem);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.about-principles header {
+  max-width: 680px;
+}
+
+.about-principles h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.about-principles > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 3.5rem;
+  background: rgb(244 240 230 / 0.2);
+}
+
+.about-principles article {
+  min-height: 220px;
+  padding: 1.5rem;
+  background: var(--ink);
+}
+
+.about-principles article span {
+  color: var(--amber);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.about-principles h3 {
+  margin: 2.5rem 0 0;
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.about-principles article p {
+  margin: 0.75rem 0 0;
+  color: rgb(244 240 230 / 0.68);
+  font-size: 0.9rem;
+}
+
 .roles span {
   color: var(--muted);
   font-size: 0.72rem;
@@ -620,6 +778,23 @@ h1 {
 
   .work-organization {
     gap: 2.5rem;
+  }
+
+  .about-hero,
+  .about-section,
+  .about-copy,
+  .about-principles > div {
+    grid-template-columns: 1fr;
+  }
+
+  .about-portrait {
+    width: min(88%, 480px);
+    grid-row: 1;
+    margin-inline: auto;
+  }
+
+  .about-section {
+    gap: 1.5rem;
   }
 
   .archive-item {

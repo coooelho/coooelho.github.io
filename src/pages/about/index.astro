@@ -1,0 +1,137 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../../assets/luis-coelho-ramos-portrait.jpg";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import { site } from "../../config/site";
+
+const description =
+  "About Luis Coelho Ramos: founder and Co-CEO of PedeAqui, international strategy leader at ICTQ Foton, and writer at the intersection of science, technology, and business.";
+---
+
+<BaseLayout
+  lang="en"
+  title={`About — ${site.publicName}`}
+  description={description}
+  alternatePath="/pt/sobre/"
+>
+  <SiteHeader lang="en" alternatePath="/pt/sobre/" current="about" />
+  <main id="content" class="shell about-page">
+    <section class="about-hero" aria-labelledby="about-title">
+      <div class="about-heading">
+        <p class="eyebrow">About · Luis Coelho Ramos</p>
+        <h1 id="about-title">Working between disciplines, institutions, and places.</h1>
+        <p class="intro">
+          I am Founder and Co-CEO of PedeAqui and Vice President for International Strategy and Partnerships at
+          ICTQ Foton. My work begins where emerging technology has to become useful to people and organizations.
+        </p>
+      </div>
+      <figure class="about-portrait">
+        <Image
+          src={portrait}
+          alt="Portrait of Luis Coelho Ramos wearing a dark suit and blue tie, smiling against a gray background."
+          widths={[480, 720, 1023]}
+          sizes="(max-width: 680px) 88vw, 34vw"
+          loading="eager"
+        />
+        <figcaption>Science · Execution · International cooperation</figcaption>
+      </figure>
+    </section>
+
+    <div class="about-story">
+      <section class="about-section" aria-labelledby="about-now">
+        <p class="about-section-label">01 · Current work</p>
+        <div>
+          <h2 id="about-now">Building for today while preparing for what comes next.</h2>
+          <div class="about-copy">
+            <p>
+              At PedeAqui, I co-lead the development of an AI platform for restaurant operations, working across
+              product, technical evolution, strategy, and commercial validation.
+            </p>
+            <p>
+              At ICTQ Foton, I lead initiatives in scientific cooperation, international positioning, funding, and
+              pathways that connect quantum technologies with global ecosystems and markets.
+            </p>
+          </div>
+          <a class="about-link" href="/work/">Explore my work <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="about-method">
+        <p class="about-section-label">02 · Scientific foundation</p>
+        <div>
+          <h2 id="about-method">The method came before the positioning.</h2>
+          <div class="about-copy">
+            <p>
+              My background in Physics and undergraduate research at UFRGS introduced me to computational physics,
+              statistical mechanics, programming, and the discipline of testing assumptions against evidence.
+            </p>
+            <p>
+              That foundation still shapes how I analyze systems, work with uncertainty, and approach current
+              questions in post-quantum cryptography and emerging technology.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="about-contexts">
+        <p class="about-section-label">03 · International perspective</p>
+        <div>
+          <h2 id="about-contexts">Changing context changes the questions.</h2>
+          <div class="about-copy">
+            <p>
+              Academic and professional experiences in Russia, Portugal, and Japan exposed me to different ways of
+              organizing work, education, institutions, and everyday life.
+            </p>
+            <p>
+              They made international cooperation practical rather than abstract: it depends on listening carefully,
+              translating context, and building trust across different expectations.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="about-publication">
+        <p class="about-section-label">04 · This publication</p>
+        <div>
+          <h2 id="about-publication">A record of work and thinking in progress.</h2>
+          <div class="about-copy">
+            <p>
+              Applied Frontier is where I examine the space between scientific possibility and practical decisions.
+              It is not a company channel or a conventional portfolio.
+            </p>
+            <p>
+              I write to make complex subjects clearer, document what building teaches me, and distinguish durable
+              signals from technological noise.
+            </p>
+          </div>
+          <a class="about-link" href="/notes/">Read the notes <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </div>
+
+    <section class="about-principles" aria-labelledby="principles-title">
+      <header>
+        <p class="eyebrow">How I work</p>
+        <h2 id="principles-title">Three working principles.</h2>
+      </header>
+      <div>
+        <article>
+          <span>01</span>
+          <h3>Evidence before certainty</h3>
+          <p>Separate what is known, inferred, and still uncertain.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Execution tests ideas</h3>
+          <p>Real constraints reveal what a compelling concept leaves out.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Curiosity needs focus</h3>
+          <p>Exploration becomes useful when it leads to sustained work.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
