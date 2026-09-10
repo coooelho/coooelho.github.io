@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import NoteFilters from "../../../components/NoteFilters.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
 import { site } from "../../../config/site";
 
 const notes = (await getCollection("notes", ({ data }) => !data.draft && data.language === "pt-BR")).sort(
@@ -15,16 +16,7 @@ const notes = (await getCollection("notes", ({ data }) => !data.draft && data.la
   description="Notas de Luis Coelho Ramos sobre ciência de fronteira, tecnologia, negócios e leituras."
   alternatePath="/notes/"
 >
-  <header class="site-header shell">
-    <a class="brand" href="/pt/">{site.publicName}</a>
-    <nav class="primary-nav" aria-label="Navegação principal">
-      <a href="/pt/notas/" aria-current="page">Notas</a>
-      <a href="/pt/notas/leituras/">Leituras</a>
-    </nav>
-    <nav class="language-nav" aria-label="Idioma">
-      <a href="/pt/notas/" aria-current="page">PT</a><span aria-hidden="true">/</span><a href="/notes/" lang="en">EN</a>
-    </nav>
-  </header>
+  <SiteHeader lang="pt-BR" alternatePath="/notes/" current="notes" />
   <main id="content" class="shell archive">
     <header class="archive-heading">
       <p class="eyebrow">Fronteira Aplicada</p>

@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import { site } from "../../config/site";
+
+const description =
+  "Luis Coelho Ramos works across AI for restaurant operations at PedeAqui and international strategy for quantum technologies at ICTQ Foton.";
+---
+
+<BaseLayout
+  lang="en"
+  title={`Work — ${site.publicName}`}
+  description={description}
+  alternatePath="/pt/atuacao/"
+>
+  <SiteHeader lang="en" alternatePath="/pt/atuacao/" current="work" />
+  <main id="content" class="shell work-page">
+    <header class="work-heading">
+      <p class="eyebrow">Work · Current roles</p>
+      <h1>Two fronts.<br />One bridge.</h1>
+      <p>
+        I work across two independent organizations: applying AI to the everyday constraints of restaurant
+        operations and connecting quantum science with international cooperation, funding, and markets.
+      </p>
+    </header>
+
+    <div class="work-list">
+      <article class="work-organization" id="pedeaqui">
+        <header class="work-organization-heading">
+          <p class="work-index">01 · AI and operations</p>
+          <h2>PedeAqui</h2>
+          <p class="work-role">Founder and Co-CEO</p>
+        </header>
+        <div class="work-organization-body">
+          <p class="work-lead">An AI platform designed to bring restaurant service and operations into one connected flow.</p>
+          <div class="work-copy-grid">
+            <section>
+              <h3>The work</h3>
+              <p>
+                PedeAqui integrates WhatsApp service, AI agents, ordering, payments, and kitchen operations. The
+                goal is practical automation that fits the realities of restaurant teams rather than adding another
+                disconnected tool.
+              </p>
+            </section>
+            <section>
+              <h3>My role</h3>
+              <p>
+                I co-lead the company and am responsible for product and technical evolution, strategy, and
+                commercial validation. I took over a technology base initially built by an external partner and now
+                lead its restructuring and continued development.
+              </p>
+            </section>
+          </div>
+          <ul class="work-focus" aria-label="PedeAqui focus areas">
+            <li>Product and technology</li>
+            <li>Business strategy</li>
+            <li>Restaurant validation</li>
+          </ul>
+          <p class="work-availability">Public website in preparation.</p>
+        </div>
+      </article>
+
+      <article class="work-organization work-organization-accent" id="ictq-foton">
+        <header class="work-organization-heading">
+          <p class="work-index">02 · Quantum technologies</p>
+          <h2>ICTQ Foton</h2>
+          <p class="work-role">Vice President for International Strategy and Partnerships</p>
+        </header>
+        <div class="work-organization-body">
+          <p class="work-lead">An independent institute connecting quantum research, innovation, and strategic application.</p>
+          <div class="work-copy-grid">
+            <section>
+              <h3>The mission</h3>
+              <p>
+                ICTQ Foton works across quantum computing, post-quantum cryptography, sensing, and advanced
+                computing, building connections between research, innovation, and their broader applications.
+              </p>
+            </section>
+            <section>
+              <h3>My role</h3>
+              <p>
+                I lead initiatives in scientific cooperation, international positioning, access to funding, and
+                pathways that connect technologies developed by the institute with global ecosystems and markets.
+              </p>
+            </section>
+          </div>
+          <ul class="work-focus" aria-label="ICTQ Foton focus areas">
+            <li>Scientific cooperation</li>
+            <li>International positioning</li>
+            <li>Funding and market pathways</li>
+          </ul>
+          <a class="work-link" href="https://www.ictqfoton.org/" target="_blank" rel="noopener noreferrer">
+            Visit ICTQ Foton <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <aside class="work-boundary" aria-label="Relationship between the organizations">
+      <p>Independent organizations</p>
+      <p>
+        PedeAqui and ICTQ Foton are separate organizations. This page describes my role in each without combining
+        their activities, positions, or institutional communications.
+      </p>
+    </aside>
+
+    <section class="work-next" aria-labelledby="work-next-title">
+      <p class="eyebrow">Applied Frontier</p>
+      <h2 id="work-next-title">From practice to notes.</h2>
+      <p>I use this space to examine what technology changes—and what it still cannot solve—in real organizations.</p>
+      <a href="/notes/">Read the notes <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+</BaseLayout>

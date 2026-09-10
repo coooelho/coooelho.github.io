@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ReadingFilters from "../../../components/ReadingFilters.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
 import { site } from "../../../config/site";
 
 const entries = (await getCollection("reading")).sort(
@@ -28,16 +29,7 @@ const creatorText = (creators: string[]) =>
   description="Books, papers, and long-form articles that have shaped the thinking and work of Luis Coelho Ramos."
   alternatePath="/pt/notas/leituras/"
 >
-  <header class="site-header shell">
-    <a class="brand" href="/">{site.publicName}</a>
-    <nav class="primary-nav" aria-label="Main navigation">
-      <a href="/notes/">Notes</a>
-      <a href="/notes/reading/" aria-current="page">Reading</a>
-    </nav>
-    <nav class="language-nav" aria-label="Language">
-      <a href="/pt/notas/leituras/" lang="pt-BR">PT</a><span aria-hidden="true">/</span><a href="/notes/reading/" aria-current="page">EN</a>
-    </nav>
-  </header>
+  <SiteHeader lang="en" alternatePath="/pt/notas/leituras/" current="reading" />
   <main id="content" class="shell archive reading-archive">
     <header class="archive-heading">
       <p class="eyebrow">Notes · Reading</p>

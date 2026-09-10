@@ -1,0 +1,40 @@
+---
+import { site } from "../config/site";
+
+interface Props {
+  lang: "en" | "pt-BR";
+  alternatePath: string;
+  current?: "notes" | "reading" | "work";
+}
+
+const { lang, alternatePath, current } = Astro.props;
+const isEnglish = lang === "en";
+const selfPath = Astro.url.pathname;
+const links = isEnglish
+  ? [
+      { key: "work", label: "Work", href: "/work/" },
+      { key: "notes", label: "Notes", href: "/notes/" },
+      { key: "reading", label: "Reading", href: "/notes/reading/" },
+    ]
+  : [
+      { key: "work", label: "Atuação", href: "/pt/atuacao/" },
+      { key: "notes", label: "Notas", href: "/pt/notas/" },
+      { key: "reading", label: "Leituras", href: "/pt/notas/leituras/" },
+    ];
+---
+
+<header class="site-header shell">
+  <a class="brand" href={isEnglish ? "/" : "/pt/"}>{site.publicName}</a>
+  <nav class="primary-nav" aria-label={isEnglish ? "Main navigation" : "Navegação principal"}>
+    {
+      links.map((link) => (
+        <a href={link.href} aria-current={current === link.key ? "page" : undefined}>{link.label}</a>
+      ))
+    }
+  </nav>
+  <nav class="language-nav" aria-label={isEnglish ? "Language" : "Idioma"}>
+    <a href={isEnglish ? alternatePath : selfPath} lang="pt-BR" aria-current={!isEnglish ? "page" : undefined}>PT</a>
+    <span aria-hidden="true">/</span>
+    <a href={isEnglish ? selfPath : alternatePath} lang="en" aria-current={isEnglish ? "page" : undefined}>EN</a>
+  </nav>
+</header>

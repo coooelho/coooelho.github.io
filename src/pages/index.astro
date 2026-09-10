@@ -1,5 +1,6 @@
 ---
 import NewsletterSignup from "../components/NewsletterSignup.astro";
+import SiteHeader from "../components/SiteHeader.astro";
 import { site } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
@@ -15,18 +16,7 @@ const description =
   description={description}
   alternatePath="/pt/"
 >
-  <header class="site-header shell">
-    <a class="brand" href="/">{site.publicName}</a>
-    <nav class="primary-nav" aria-label="Main navigation">
-      <a href="/notes/">Notes</a>
-      <a href="/notes/reading/">Reading</a>
-    </nav>
-    <nav class="language-nav" aria-label="Language">
-      <a href="/pt/" lang="pt-BR">PT</a>
-      <span aria-hidden="true">/</span>
-      <a href="/" aria-current="page">EN</a>
-    </nav>
-  </header>
+  <SiteHeader lang="en" alternatePath="/pt/" />
   <main id="content" class="shell hero">
     <div class="hero-copy">
       <p class="eyebrow">AI · Quantum Technology · International Strategy</p>

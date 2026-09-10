@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NoteFilters from "../../components/NoteFilters.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
 import { site } from "../../config/site";
 
 const notes = (await getCollection("notes", ({ data }) => !data.draft && data.language === "en")).sort(
@@ -15,16 +16,7 @@ const notes = (await getCollection("notes", ({ data }) => !data.draft && data.la
   description="Notes by Luis Coelho Ramos on frontier science, technology, business, and reading."
   alternatePath="/pt/notas/"
 >
-  <header class="site-header shell">
-    <a class="brand" href="/">{site.publicName}</a>
-    <nav class="primary-nav" aria-label="Main navigation">
-      <a href="/notes/" aria-current="page">Notes</a>
-      <a href="/notes/reading/">Reading</a>
-    </nav>
-    <nav class="language-nav" aria-label="Language">
-      <a href="/pt/notas/" lang="pt-BR">PT</a><span aria-hidden="true">/</span><a href="/notes/" aria-current="page">EN</a>
-    </nav>
-  </header>
+  <SiteHeader lang="en" alternatePath="/pt/notas/" current="notes" />
   <main id="content" class="shell archive">
     <header class="archive-heading">
       <p class="eyebrow">Applied Frontier</p>

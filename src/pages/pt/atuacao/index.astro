@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import { site } from "../../../config/site";
+
+const description =
+  "Luis Coelho Ramos atua com IA para operações de restaurantes no PedeAqui e estratégia internacional para tecnologias quânticas no ICTQ Foton.";
+---
+
+<BaseLayout
+  lang="pt-BR"
+  title={`Atuação — ${site.publicName}`}
+  description={description}
+  alternatePath="/work/"
+>
+  <SiteHeader lang="pt-BR" alternatePath="/work/" current="work" />
+  <main id="content" class="shell work-page">
+    <header class="work-heading">
+      <p class="eyebrow">Atuação · Papéis atuais</p>
+      <h1>Duas frentes.<br />Uma ponte.</h1>
+      <p>
+        Atuo em duas organizações independentes: aplicando IA às restrições concretas das operações de restaurantes
+        e conectando ciência quântica a cooperação internacional, financiamento e mercados.
+      </p>
+    </header>
+
+    <div class="work-list">
+      <article class="work-organization" id="pedeaqui">
+        <header class="work-organization-heading">
+          <p class="work-index">01 · IA e operações</p>
+          <h2>PedeAqui</h2>
+          <p class="work-role">Fundador e co-CEO</p>
+        </header>
+        <div class="work-organization-body">
+          <p class="work-lead">Uma plataforma de IA criada para integrar atendimento e operação de restaurantes em um único fluxo.</p>
+          <div class="work-copy-grid">
+            <section>
+              <h3>A atuação</h3>
+              <p>
+                O PedeAqui integra atendimento pelo WhatsApp, agentes de IA, pedidos, pagamentos e operação de
+                cozinha. O objetivo é criar automação prática, adequada à realidade das equipes de restaurantes,
+                sem acrescentar mais uma ferramenta desconectada.
+              </p>
+            </section>
+            <section>
+              <h3>Meu papel</h3>
+              <p>
+                Como fundador e co-CEO, colidero a empresa e respondo pela evolução de produto e tecnologia,
+                estratégia e validação comercial. Assumi uma base tecnológica desenvolvida inicialmente por um
+                parceiro externo e hoje lidero sua reestruturação e evolução.
+              </p>
+            </section>
+          </div>
+          <ul class="work-focus" aria-label="Áreas de atuação no PedeAqui">
+            <li>Produto e tecnologia</li>
+            <li>Estratégia de negócio</li>
+            <li>Validação com restaurantes</li>
+          </ul>
+          <p class="work-availability">Site público em preparação.</p>
+        </div>
+      </article>
+
+      <article class="work-organization work-organization-accent" id="ictq-foton">
+        <header class="work-organization-heading">
+          <p class="work-index">02 · Tecnologias quânticas</p>
+          <h2>ICTQ Foton</h2>
+          <p class="work-role">Vice-Presidente de Estratégia e Parcerias Internacionais</p>
+        </header>
+        <div class="work-organization-body">
+          <p class="work-lead">Uma instituição independente que conecta pesquisa quântica, inovação e aplicação estratégica.</p>
+          <div class="work-copy-grid">
+            <section>
+              <h3>A missão</h3>
+              <p>
+                O ICTQ Foton atua em computação quântica, criptografia pós-quântica, sensores e computação avançada,
+                construindo conexões entre pesquisa, inovação e suas aplicações mais amplas.
+              </p>
+            </section>
+            <section>
+              <h3>Meu papel</h3>
+              <p>
+                Lidero iniciativas de cooperação científica, posicionamento internacional, acesso a financiamento e
+                caminhos que conectam as tecnologias desenvolvidas pelo instituto a ecossistemas e mercados globais.
+              </p>
+            </section>
+          </div>
+          <ul class="work-focus" aria-label="Áreas de atuação no ICTQ Foton">
+            <li>Cooperação científica</li>
+            <li>Posicionamento internacional</li>
+            <li>Financiamento e acesso a mercados</li>
+          </ul>
+          <a class="work-link" href="https://www.ictqfoton.org/" target="_blank" rel="noopener noreferrer">
+            Conheça o ICTQ Foton <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <aside class="work-boundary" aria-label="Relação entre as organizações">
+      <p>Organizações independentes</p>
+      <p>
+        PedeAqui e ICTQ Foton são organizações separadas. Esta página descreve meu papel em cada uma sem combinar
+        suas atividades, posições ou comunicações institucionais.
+      </p>
+    </aside>
+
+    <section class="work-next" aria-labelledby="work-next-title">
+      <p class="eyebrow">Fronteira Aplicada</p>
+      <h2 id="work-next-title">Da prática às notas.</h2>
+      <p>Uso este espaço para examinar o que a tecnologia transforma — e o que ainda não consegue resolver — em organizações reais.</p>
+      <a href="/pt/notas/">Ler as notas <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+</BaseLayout>
