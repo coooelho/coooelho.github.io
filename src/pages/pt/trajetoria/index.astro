@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import { site } from "../../../config/site";
+
+const description =
+  "A trajetória de Luis Coelho Ramos entre operações empresariais, Física, experiências internacionais, tecnologias quânticas e inteligência artificial aplicada.";
+
+const chapters = [
+  {
+    phase: "Primeiras experiências",
+    title: "Aprender como as organizações realmente funcionam.",
+    text: "Minha primeira formação profissional veio da empresa familiar. O contato próximo com clientes, estoque, manutenção e operação cotidiana me ensinou que toda estratégia acaba encontrando um processo, uma restrição e alguém responsável por fazê-la funcionar.",
+  },
+  {
+    phase: "Fundamento científico",
+    title: "Aprender a investigar.",
+    text: "Na UFRGS, a Física e a iniciação científica me aproximaram da física computacional, da mecânica estatística e da programação. Mais importante, ensinaram-me a formular perguntas, testar hipóteses e tratar a incerteza como parte do trabalho.",
+  },
+  {
+    phase: "Contextos internacionais",
+    title: "Observar problemas conhecidos a partir de outros lugares.",
+    text: "Experiências acadêmicas e profissionais na Rússia, em Portugal e no Japão me colocaram diante de formas diferentes de organizar educação, trabalho, instituições e vida cotidiana. Elas tornaram impossível ignorar o contexto — e o esforço necessário para traduzi-lo.",
+  },
+  {
+    phase: "Liderança operacional",
+    title: "Da operação à responsabilidade.",
+    text: "Mais tarde, administrei a empresa familiar, aproximei os dados das decisões e conduzi sua transição de propriedade. Esse período tornou foco, continuidade e execução responsável mais concretos do que qualquer modelo abstrato de gestão poderia tornar.",
+  },
+  {
+    phase: "Dados e decisões",
+    title: "Aplicar análise em uma arena diferente.",
+    text: "O trabalho com análise de dados em uma campanha eleitoral ofereceu outro ambiente em que informações complexas precisavam ser organizadas e transformadas em decisões sob pressão.",
+  },
+  {
+    phase: "Tecnologias quânticas",
+    title: "Conectar pesquisa, instituições e mercados.",
+    text: "No ICTQ Foton, lidero estratégia e parcerias internacionais em cooperação científica, posicionamento, financiamento e caminhos de mercado. Esse trabalho reflete um interesse mais amplo em como organizações se preparam para mudanças tecnológicas antes que suas implicações práticas estejam plenamente definidas.",
+  },
+  {
+    phase: "IA aplicada",
+    title: "Construir onde tecnologia encontra operação.",
+    text: "Como fundador e co-CEO do PedeAqui, trabalho na evolução de uma plataforma de IA para operações de restaurantes. Desenvolvimento de produto, reestruturação técnica e validação comercial reúnem as diferentes partes dessa trajetória em um problema prático.",
+  },
+];
+---
+
+<BaseLayout
+  lang="pt-BR"
+  title={`Trajetória — ${site.publicName}`}
+  description={description}
+  alternatePath="/journey/"
+>
+  <SiteHeader lang="pt-BR" alternatePath="/journey/" current="journey" />
+  <main id="content" class="shell journey-page">
+    <header class="journey-heading">
+      <p class="eyebrow">Trajetória · Capítulos selecionados</p>
+      <h1>Um caminho moldado pela prática, pela investigação e por mudanças de contexto.</h1>
+      <p>
+        Este não é um currículo completo. É um percurso pelas experiências que moldaram a forma como conecto ciência,
+        tecnologia, negócios e cooperação internacional.
+      </p>
+    </header>
+
+    <ol class="journey-list">
+      {
+        chapters.map((chapter, index) => (
+          <li class="journey-entry">
+            <div class="journey-marker">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <p>{chapter.phase}</p>
+            </div>
+            <div class="journey-copy">
+              <h2>{chapter.title}</h2>
+              <p>{chapter.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <section class="journey-present" aria-labelledby="journey-present-title">
+      <p class="eyebrow">O presente</p>
+      <h2 id="journey-present-title">O caminho continua sendo escrito.</h2>
+      <p>
+        Hoje, PedeAqui e ICTQ Foton são as duas principais frentes do meu trabalho. As notas deste site registram as
+        perguntas, decisões e mudanças de opinião que surgem ao longo do percurso.
+      </p>
+      <div class="journey-actions">
+        <a href="/pt/atuacao/">Conheça minha atuação <span aria-hidden="true">→</span></a>
+        <a href="/pt/notas/">Leia as notas <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

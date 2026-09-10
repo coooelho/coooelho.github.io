@@ -4,7 +4,7 @@ import { site } from "../config/site";
 interface Props {
   lang: "en" | "pt-BR";
   alternatePath: string;
-  current?: "notes" | "reading" | "work" | "about";
+  current?: "notes" | "reading" | "work" | "journey" | "about";
 }
 
 const { lang, alternatePath, current } = Astro.props;
@@ -15,12 +15,14 @@ const links = isEnglish
       { key: "work", label: "Work", href: "/work/" },
       { key: "notes", label: "Notes", href: "/notes/" },
       { key: "reading", label: "Reading", href: "/notes/reading/" },
+      { key: "journey", label: "Journey", href: "/journey/" },
       { key: "about", label: "About", href: "/about/" },
     ]
   : [
       { key: "work", label: "Atuação", href: "/pt/atuacao/" },
       { key: "notes", label: "Notas", href: "/pt/notas/" },
       { key: "reading", label: "Leituras", href: "/pt/notas/leituras/" },
+      { key: "journey", label: "Trajetória", href: "/pt/trajetoria/" },
       { key: "about", label: "Sobre", href: "/pt/sobre/" },
     ];
 ---
