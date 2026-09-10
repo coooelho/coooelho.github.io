@@ -1,0 +1,15 @@
+{
+  "title": "A fault-tolerant neutral-atom architecture for universal quantum computation",
+  "description": {
+    "en": "A neutral-atom architecture for universal fault-tolerant quantum computation, bringing together logical operations, error correction, and atom-array reconfiguration.",
+    "pt": "Uma arquitetura de átomos neutros para computação quântica universal tolerante a falhas, integrando operações lógicas, correção de erros e reconfiguração de arranjos atômicos."
+  },
+  "type": "paper",
+  "creators": ["Dolev Bluvstein", "Alexandra A. Geim", "Sophie H. Li", "Simon J. Evered", "J. Pablo Bonilla Ataides", "Gefen Baranes", "Andi Gu", "Tom Manovitz", "Muqing Xu", "Marcin Kalinowski", "Shayan Majidy", "Christian Kokail", "Nishad Maskara", "Elias C. Trapp", "Luke M. Stewart", "Simon Hollerith", "Hengyun Zhou", "Michael J. Gullans", "Susanne F. Yelin", "Markus Greiner", "Vladan Vuletić", "Madelyn Cain", "Mikhail D. Lukin"],
+  "sourceUrl": "https://www.nature.com/articles/s41586-025-09848-5",
+  "publicationYear": 2026,
+  "identifier": "DOI 10.1038/s41586-025-09848-5",
+  "venue": "Nature 649, 39–46",
+  "status": "reference",
+  "addedAt": "2026-08-30"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Quantum computing with neutral atoms",
+  "description": {
+    "en": "An overview of how trapped neutral atoms can encode, manipulate, and entangle qubits for quantum computation.",
+    "pt": "Uma visão geral de como átomos neutros aprisionados podem codificar, manipular e entrelaçar qubits para computação quântica."
+  },
+  "type": "article",
+  "creators": ["David S. Weiss", "Mark Saffman"],
+  "sourceUrl": "https://physicstoday.aip.org/features/quantum-computing-with-neutral-atoms",
+  "publicationYear": 2017,
+  "identifier": "DOI 10.1063/PT.3.3626",
+  "venue": "Physics Today 70(7), 44–50",
+  "status": "reference",
+  "addedAt": "2026-08-30"
+}

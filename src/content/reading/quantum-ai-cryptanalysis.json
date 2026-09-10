@@ -1,0 +1,15 @@
+{
+  "title": "Quantum Artificial Intelligence on Cryptanalysis",
+  "description": {
+    "en": "A preprint proposing a quantum-neural-network approach to learning patterns in cryptographic algorithms for key-recovery attacks.",
+    "pt": "Preprint que propõe o uso de redes neurais quânticas para aprender padrões em algoritmos criptográficos e realizar ataques de recuperação de chaves."
+  },
+  "type": "paper",
+  "creators": ["Hyunji Kim", "Sejin Lim", "Anubhab Baksi", "Dukyoung Kim", "Seyoung Yoon", "Kyungbae Jang", "Hwajeong Seo"],
+  "sourceUrl": "https://eprint.iacr.org/2023/004",
+  "publicationYear": 2023,
+  "identifier": "IACR ePrint 2023/004",
+  "venue": "IACR Cryptology ePrint Archive",
+  "status": "reference",
+  "addedAt": "2026-08-30"
+}

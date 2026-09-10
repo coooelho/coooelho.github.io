@@ -1,0 +1,15 @@
+{
+  "title": "Hybrid Quantum Neighborhood Selection: NISQ-Compatible Combinatorial Optimization via Stochastic Frontier Decomposition",
+  "description": {
+    "en": "A hybrid method for combinatorial neighborhood selection that decomposes the optimization frontier into subproblems suitable for NISQ-era quantum routines.",
+    "pt": "Um método híbrido de seleção de vizinhanças combinatórias que decompõe a fronteira de otimização em subproblemas adequados a rotinas quânticas da era NISQ."
+  },
+  "type": "paper",
+  "creators": ["Nicolas Mendes de Araujo", "Lester de Abreu Faria"],
+  "sourceUrl": "https://arxiv.org/abs/2606.29647",
+  "publicationYear": 2026,
+  "identifier": "arXiv:2606.29647",
+  "venue": "arXiv",
+  "status": "reference",
+  "addedAt": "2026-08-30"
+}

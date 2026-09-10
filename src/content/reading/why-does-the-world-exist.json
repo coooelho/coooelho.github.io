@@ -1,0 +1,16 @@
+{
+  "title": "Why Does the World Exist? An Existential Detective Story",
+  "titlePt": "Por que o mundo existe? Um mistério existencial",
+  "description": {
+    "en": "Jim Holt investigates why there is something rather than nothing through conversations spanning philosophy, physics, and cosmology.",
+    "pt": "Jim Holt investiga por que existe algo em vez de nada por meio de conversas que atravessam filosofia, física e cosmologia."
+  },
+  "type": "book",
+  "creators": ["Jim Holt"],
+  "sourceUrl": "https://wwnorton.co.uk/books/9780871404091-why-does-the-world-exist-cacf3ce6-32be-4085-b626-32b2213c97b9",
+  "publicationYear": 2012,
+  "identifier": "ISBN 978-0-87140-409-1",
+  "venue": "Liveright / W. W. Norton",
+  "status": "reference",
+  "addedAt": "2026-09-10"
+}

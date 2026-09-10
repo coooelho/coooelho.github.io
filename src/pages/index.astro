@@ -1,0 +1,62 @@
+---
+import NewsletterSignup from "../components/NewsletterSignup.astro";
+import { site } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import portrait from "../assets/luis-coelho-ramos-portrait.jpg";
+
+const description =
+  "Luis Coelho Ramos is Founder and Co-CEO of PedeAqui and Vice President for International Strategy and Partnerships at ICTQ Foton.";
+---
+
+<BaseLayout
+  lang="en"
+  title={`${site.publicName} — ${site.publication.en}`}
+  description={description}
+  alternatePath="/pt/"
+>
+  <header class="site-header shell">
+    <a class="brand" href="/">{site.publicName}</a>
+    <nav class="primary-nav" aria-label="Main navigation">
+      <a href="/notes/">Notes</a>
+      <a href="/notes/reading/">Reading</a>
+    </nav>
+    <nav class="language-nav" aria-label="Language">
+      <a href="/pt/" lang="pt-BR">PT</a>
+      <span aria-hidden="true">/</span>
+      <a href="/" aria-current="page">EN</a>
+    </nav>
+  </header>
+  <main id="content" class="shell hero">
+    <div class="hero-copy">
+      <p class="eyebrow">AI · Quantum Technology · International Strategy</p>
+      <h1>Turning frontier science into decisions that matter.</h1>
+      <p class="intro">
+        I work where emerging technology meets execution: co-leading PedeAqui,
+        an AI platform for restaurant operations, and leading international
+        affairs at ICTQ Foton, Brazil's Institute of Quantum Science and
+        Technology.
+      </p>
+      <div class="roles">
+        <article>
+          <span>Building</span>
+          <h2>Founder and Co-CEO of PedeAqui</h2>
+        </article>
+        <article>
+          <span>International</span>
+          <h2>Vice President for International Strategy and Partnerships at ICTQ Foton</h2>
+        </article>
+      </div>
+      <NewsletterSignup lang="en" />
+    </div>
+    <figure class="hero-portrait">
+      <Image
+        src={portrait}
+        alt="Portrait of Luis Coelho Ramos wearing a dark suit and blue tie, smiling against a gray background."
+        widths={[480, 720, 1023]}
+        sizes="(max-width: 800px) 88vw, 38vw"
+        loading="eager"
+      />
+    </figure>
+  </main>
+</BaseLayout>

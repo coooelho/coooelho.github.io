@@ -1,0 +1,15 @@
+{
+  "title": "The Sign of the Four",
+  "titlePt": "Sherlock Holmes: O Signo dos Quatro",
+  "description": {
+    "en": "Sherlock Holmes and Dr. Watson investigate a missing father, mysterious pearls, a stolen treasure, and a pact forged in colonial India.",
+    "pt": "Sherlock Holmes e Dr. Watson investigam um pai desaparecido, pérolas misteriosas, um tesouro roubado e um pacto firmado na Índia colonial."
+  },
+  "type": "book",
+  "creators": ["Sir Arthur Conan Doyle"],
+  "sourceUrl": "https://www.gutenberg.org/ebooks/2097",
+  "publicationYear": 1890,
+  "venue": "Spencer Blackett",
+  "status": "reference",
+  "addedAt": "2026-09-10"
+}

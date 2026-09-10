@@ -1,0 +1,15 @@
+{
+  "title": "Practical Use Cases of Neutral Atoms Quantum Computers",
+  "description": {
+    "en": "A survey of practical application areas for neutral-atom quantum computers and the characteristics that distinguish this hardware platform.",
+    "pt": "Um levantamento de áreas de aplicação prática para computadores quânticos de átomos neutros e das características que distinguem essa plataforma de hardware."
+  },
+  "type": "paper",
+  "creators": ["Matteo Grotti", "Sara Marzella", "Gabriella Bettonte", "Daniele Ottaviani", "Elisa Ercolessi"],
+  "sourceUrl": "https://arxiv.org/abs/2510.18732",
+  "publicationYear": 2025,
+  "identifier": "arXiv:2510.18732",
+  "venue": "arXiv",
+  "status": "reference",
+  "addedAt": "2026-08-30"
+}

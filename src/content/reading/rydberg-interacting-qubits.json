@@ -1,0 +1,15 @@
+{
+  "title": "Quantum simulation and computing with Rydberg-interacting qubits",
+  "description": {
+    "en": "A review of Rydberg-interacting neutral atoms as a platform for quantum simulation and digital quantum computing.",
+    "pt": "Uma revisão de átomos neutros com interações de Rydberg como plataforma para simulação quântica e computação quântica digital."
+  },
+  "type": "paper",
+  "creators": ["M. Morgado", "S. Whitlock"],
+  "sourceUrl": "https://doi.org/10.1116/5.0039525",
+  "publicationYear": 2021,
+  "identifier": "DOI 10.1116/5.0039525",
+  "venue": "AVS Quantum Science 3, 023501",
+  "status": "reference",
+  "addedAt": "2026-08-30"
+}

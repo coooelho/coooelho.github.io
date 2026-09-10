@@ -1,0 +1,59 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site } from "../../config/site";
+
+const notes = (await getCollection("notes", ({ data }) => !data.draft && data.language === "en")).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+---
+
+<BaseLayout
+  lang="en"
+  title={`Notes — ${site.publicName}`}
+  description="Notes by Luis Coelho Ramos on frontier science, technology, business, and reading."
+  alternatePath="/pt/notas/"
+>
+  <header class="site-header shell">
+    <a class="brand" href="/">{site.publicName}</a>
+    <nav class="primary-nav" aria-label="Main navigation">
+      <a href="/notes/" aria-current="page">Notes</a>
+      <a href="/notes/reading/">Reading</a>
+    </nav>
+    <nav class="language-nav" aria-label="Language">
+      <a href="/pt/notas/" lang="pt-BR">PT</a><span aria-hidden="true">/</span><a href="/notes/" aria-current="page">EN</a>
+    </nav>
+  </header>
+  <main id="content" class="shell archive">
+    <header class="archive-heading">
+      <p class="eyebrow">Applied Frontier</p>
+      <h1>Notes</h1>
+      <p>Essays, analyses, and field notes on science, execution, and the ideas shaping my work.</p>
+    </header>
+    <nav class="category-nav" aria-label="Note categories">
+      <span aria-current="page">All</span>
+      <span>Frontiers</span>
+      <span>Applications</span>
+      <span>Building</span>
+      <a href="/notes/reading/">Reading</a>
+    </nav>
+    <div class="archive-list">
+      {
+        notes.length > 0 ? (
+          notes.map((note) => (
+            <article class="archive-item">
+              <p>{note.data.category} · {note.data.format}</p>
+              <h2>{note.data.title}</h2>
+              <p>{note.data.description}</p>
+              <time datetime={note.data.publishedAt.toISOString()}>
+                {note.data.publishedAt.toLocaleDateString("en", { dateStyle: "long" })}
+              </time>
+            </article>
+          ))
+        ) : (
+          <p class="empty-state">The first notes are being prepared.</p>
+        )
+      }
+    </div>
+  </main>
+</BaseLayout>

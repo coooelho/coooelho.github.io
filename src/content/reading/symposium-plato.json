@@ -1,0 +1,15 @@
+{
+  "title": "Symposium",
+  "titlePt": "O Banquete",
+  "description": {
+    "en": "Plato’s dialogue in which a gathering of speakers examines love, desire, beauty, and the philosophical life.",
+    "pt": "Diálogo de Platão em que os participantes de um banquete examinam o amor, o desejo, a beleza e a vida filosófica."
+  },
+  "type": "book",
+  "creators": ["Plato"],
+  "sourceUrl": "https://classics.mit.edu/Plato/symposium.html",
+  "publicationYear": -385,
+  "publicationYearApproximate": true,
+  "status": "reference",
+  "addedAt": "2026-09-10"
+}

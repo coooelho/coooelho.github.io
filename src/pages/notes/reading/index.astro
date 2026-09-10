@@ -1,0 +1,84 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { site } from "../../../config/site";
+
+const entries = (await getCollection("reading")).sort(
+  (a, b) => b.data.publicationYear - a.data.publicationYear || a.data.title.localeCompare(b.data.title),
+);
+
+const typeLabel = {
+  book: "Book",
+  paper: "Research paper",
+  article: "Article",
+  "conference-paper": "Conference paper",
+} as const;
+const statusLabel = { reading: "Reading", finished: "Finished", reference: "Catalogued" } as const;
+const publicationLabel = (year: number, approximate: boolean) => {
+  const prefix = approximate ? "c. " : "";
+  return year < 0 ? `${prefix}${Math.abs(year)} BCE` : `${prefix}${year}`;
+};
+const finishedCount = entries.filter(({ data }) => data.status === "finished").length;
+const creatorText = (creators: string[]) =>
+  creators.length > 8 ? `${creators.slice(0, 2).join(", ")} and ${creators.length - 2} others` : creators.join(", ");
+---
+
+<BaseLayout
+  lang="en"
+  title={`Reading — ${site.publicName}`}
+  description="Books, papers, and long-form articles that have shaped the thinking and work of Luis Coelho Ramos."
+  alternatePath="/pt/notas/leituras/"
+>
+  <header class="site-header shell">
+    <a class="brand" href="/">{site.publicName}</a>
+    <nav class="primary-nav" aria-label="Main navigation">
+      <a href="/notes/">Notes</a>
+      <a href="/notes/reading/" aria-current="page">Reading</a>
+    </nav>
+    <nav class="language-nav" aria-label="Language">
+      <a href="/pt/notas/leituras/" lang="pt-BR">PT</a><span aria-hidden="true">/</span><a href="/notes/reading/" aria-current="page">EN</a>
+    </nav>
+  </header>
+  <main id="content" class="shell archive reading-archive">
+    <header class="archive-heading">
+      <p class="eyebrow">Notes · Reading</p>
+      <h1>Reading library</h1>
+      <p>
+        Works I read in the past and intend to revisit. As I complete each rereading, I will publish my note or
+        review here and update its status.
+      </p>
+      <p class="archive-summary">{entries.length} works catalogued · {finishedCount} rereadings completed</p>
+    </header>
+    <div class="reading-types" aria-label="Reading types">
+      <div><strong>Books</strong><span>Arguments worth revisiting</span></div>
+      <div><strong>Papers</strong><span>Evidence and frontier research</span></div>
+      <div><strong>Articles</strong><span>Selected long-form reading</span></div>
+    </div>
+    <div class="archive-list">
+      {
+        entries.length > 0 ? (
+          entries.map((entry) => (
+            <article class="archive-item">
+              <p>
+                {typeLabel[entry.data.type]} · {statusLabel[entry.data.status]} · {publicationLabel(entry.data.publicationYear, entry.data.publicationYearApproximate)}
+              </p>
+              <div class="reading-entry">
+                <h2>{entry.data.title}</h2>
+                <p class="reading-creator">
+                  {entry.data.creatorRole === "editor" && "Edited by "}{creatorText(entry.data.creators)}
+                </p>
+                <p>{entry.data.description.en}</p>
+                {entry.data.venue && <p class="reading-venue">{entry.data.venue}</p>}
+                <a href={entry.data.sourceUrl} rel="noopener noreferrer">
+                  View original source <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </article>
+          ))
+        ) : (
+          <p class="empty-state">Reading notes will appear here as the collection is curated.</p>
+        )
+      }
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,15 @@
+{
+  "title": "A concise review of Rydberg atom based quantum computation and quantum simulation",
+  "description": {
+    "en": "A concise review of Rydberg-atom quantum computing and simulation, covering interactions, gate schemes, many-body models, and experimental progress.",
+    "pt": "Uma revisão concisa da computação e simulação quânticas com átomos de Rydberg, abordando interações, esquemas de portas, modelos de muitos corpos e avanços experimentais."
+  },
+  "type": "paper",
+  "creators": ["Xiaoling Wu", "Xinhui Liang", "Yuan Tian", "Fangzhao Yang", "Chao Chen", "Yan-Cheng Liu", "Meng Khoon Tey", "Li You"],
+  "sourceUrl": "https://doi.org/10.1088/1674-1056/abd76f",
+  "publicationYear": 2021,
+  "identifier": "DOI 10.1088/1674-1056/abd76f",
+  "venue": "Chinese Physics B 30, 020305",
+  "status": "reference",
+  "addedAt": "2026-08-30"
+}

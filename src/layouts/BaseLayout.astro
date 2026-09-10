@@ -1,0 +1,29 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  lang: "en" | "pt-BR";
+  title: string;
+  description: string;
+  alternatePath: string;
+}
+
+const { lang, title, description, alternatePath } = Astro.props;
+const isEnglish = lang === "en";
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="alternate" hreflang={isEnglish ? "pt-BR" : "en"} href={alternatePath} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">{isEnglish ? "Skip to content" : "Pular para o conteúdo"}</a>
+    <slot />
+  </body>
+</html>

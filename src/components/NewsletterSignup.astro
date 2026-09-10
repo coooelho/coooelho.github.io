@@ -1,0 +1,28 @@
+---
+import { site } from "../config/site";
+
+interface Props {
+  lang: "en" | "pt";
+}
+
+const { lang } = Astro.props;
+const canRender = site.newsletter.enabled && site.newsletter.subscribeUrl;
+---
+
+{
+  canRender && (
+    <aside class="newsletter" aria-labelledby={`newsletter-${lang}`}>
+      <h2 id={`newsletter-${lang}`}>
+        {lang === "en" ? "Follow Applied Frontier" : "Acompanhe Fronteira Aplicada"}
+      </h2>
+      <p>
+        {lang === "en"
+          ? "Occasional notes on science, technology, and business."
+          : "Notas ocasionais sobre ciência, tecnologia e negócios."}
+      </p>
+      <a href={site.newsletter.subscribeUrl} rel="noopener">
+        {lang === "en" ? "Subscribe" : "Assinar"}
+      </a>
+    </aside>
+  )
+}

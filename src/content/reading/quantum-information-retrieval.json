@@ -1,0 +1,15 @@
+{
+  "title": "Introductory review to quantum information retrieval",
+  "description": {
+    "en": "A review of how quantum-theoretical formalism has been applied beyond physics, particularly to models and problems in information retrieval.",
+    "pt": "Uma revisão de como o formalismo da teoria quântica vem sendo aplicado além da Física, particularmente a modelos e problemas de recuperação da informação."
+  },
+  "type": "paper",
+  "creators": ["Alexander Lebedev", "Andrei Khrennikov"],
+  "sourceUrl": "https://arxiv.org/abs/2008.13541",
+  "publicationYear": 2020,
+  "identifier": "arXiv:2008.13541",
+  "venue": "arXiv",
+  "status": "reference",
+  "addedAt": "2026-08-30"
+}

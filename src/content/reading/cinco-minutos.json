@@ -1,0 +1,14 @@
+{
+  "title": "Cinco Minutos",
+  "description": {
+    "en": "José de Alencar’s short urban romance about a delayed journey, a mysterious encounter, and love pursued through nineteenth-century Rio de Janeiro.",
+    "pt": "Breve romance urbano de José de Alencar sobre um atraso, um encontro misterioso e um amor perseguido pelo Rio de Janeiro do século XIX."
+  },
+  "type": "book",
+  "creators": ["José de Alencar"],
+  "sourceUrl": "https://www.brasiliana.usp.br/handle/bbm/4076",
+  "publicationYear": 1856,
+  "venue": "Diário do Rio de Janeiro",
+  "status": "reference",
+  "addedAt": "2026-09-10"
+}

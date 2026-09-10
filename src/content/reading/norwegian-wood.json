@@ -1,0 +1,14 @@
+{
+  "title": "Norwegian Wood",
+  "description": {
+    "en": "Haruki Murakami’s coming-of-age novel about memory, grief, love, and emotional isolation in late-1960s Tokyo.",
+    "pt": "Romance de formação de Haruki Murakami sobre memória, luto, amor e isolamento emocional na Tóquio do fim dos anos 1960."
+  },
+  "type": "book",
+  "creators": ["Haruki Murakami"],
+  "sourceUrl": "https://www.penguinrandomhouse.com/books/118720/norwegian-wood-by-haruki-murakami/",
+  "publicationYear": 1987,
+  "venue": "Kodansha",
+  "status": "reference",
+  "addedAt": "2026-09-10"
+}

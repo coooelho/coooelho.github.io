@@ -1,0 +1,14 @@
+{
+  "title": "Making a Quantum Computer Using Neutral Atoms",
+  "description": {
+    "en": "An accessible technical overview of the principles and experimental requirements involved in building a quantum computer with neutral atoms.",
+    "pt": "Uma introdução técnica aos princípios e requisitos experimentais envolvidos na construção de um computador quântico com átomos neutros."
+  },
+  "type": "article",
+  "creators": ["Tetsuya Mukai"],
+  "sourceUrl": "https://ntt-review.jp/archive/ntttechnical.php?contents=ntr200801sp7.html",
+  "publicationYear": 2008,
+  "venue": "NTT Technical Review 6(1)",
+  "status": "reference",
+  "addedAt": "2026-08-30"
+}

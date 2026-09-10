@@ -1,0 +1,15 @@
+{
+  "title": "Politics",
+  "titlePt": "A Política",
+  "description": {
+    "en": "Aristotle’s foundational inquiry into political communities, citizenship, constitutions, and the purposes of collective life.",
+    "pt": "A investigação fundamental de Aristóteles sobre comunidades políticas, cidadania, constituições e os propósitos da vida coletiva."
+  },
+  "type": "book",
+  "creators": ["Aristotle"],
+  "sourceUrl": "https://classics.mit.edu/Aristotle/politics.html",
+  "publicationYear": -350,
+  "publicationYearApproximate": true,
+  "status": "reference",
+  "addedAt": "2026-09-10"
+}

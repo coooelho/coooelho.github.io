@@ -1,0 +1,16 @@
+{
+  "title": "Quantum Technologies: Trends and Implications for Cyber Defense",
+  "description": {
+    "en": "An open-access edited volume on developments in quantum computing, communication, sensing, and their strategic implications for cyber defense.",
+    "pt": "Obra coletiva de acesso aberto sobre avanços em computação, comunicação e sensoriamento quânticos e suas implicações estratégicas para a ciberdefesa."
+  },
+  "type": "book",
+  "creators": ["Julian Jang-Jaccard", "Philippe Caroff", "Evan Blezinger", "Valentin Mulder", "Alain Mermoud", "Vincent Lenders"],
+  "creatorRole": "editor",
+  "sourceUrl": "https://link.springer.com/book/10.1007/978-3-031-90727-2",
+  "publicationYear": 2026,
+  "identifier": "DOI 10.1007/978-3-031-90727-2",
+  "venue": "Springer Nature",
+  "status": "reference",
+  "addedAt": "2026-08-30"
+}

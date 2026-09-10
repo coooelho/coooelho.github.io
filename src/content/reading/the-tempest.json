@@ -1,0 +1,15 @@
+{
+  "title": "The Tempest",
+  "titlePt": "A Tempestade",
+  "description": {
+    "en": "Shakespeare’s play of shipwreck, magic, power, betrayal, reconciliation, and the difficult choice to renounce revenge.",
+    "pt": "Peça de Shakespeare sobre naufrágio, magia, poder, traição, reconciliação e a difícil escolha de renunciar à vingança."
+  },
+  "type": "book",
+  "creators": ["William Shakespeare"],
+  "sourceUrl": "https://www.folger.edu/explore/shakespeares-works/the-tempest/",
+  "publicationYear": 1623,
+  "venue": "First Folio",
+  "status": "reference",
+  "addedAt": "2026-09-10"
+}

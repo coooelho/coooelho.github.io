@@ -1,0 +1,15 @@
+{
+  "title": "Quantum computing with atomic qubits and Rydberg interactions: Progress and challenges",
+  "description": {
+    "en": "A review of progress toward quantum computing with atomic qubits, the role of Rydberg interactions, and the platform’s remaining challenges.",
+    "pt": "Uma revisão do progresso da computação quântica com qubits atômicos, do papel das interações de Rydberg e dos desafios ainda enfrentados pela plataforma."
+  },
+  "type": "paper",
+  "creators": ["Mark Saffman"],
+  "sourceUrl": "https://doi.org/10.1088/0953-4075/49/20/202001",
+  "publicationYear": 2016,
+  "identifier": "DOI 10.1088/0953-4075/49/20/202001",
+  "venue": "Journal of Physics B 49, 202001",
+  "status": "reference",
+  "addedAt": "2026-08-30"
+}
