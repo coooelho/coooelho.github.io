@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import NoteFilters from "../../../components/NoteFilters.astro";
 import { site } from "../../../config/site";
 
 const notes = (await getCollection("notes", ({ data }) => !data.draft && data.language === "pt-BR")).sort(
@@ -30,18 +31,11 @@ const notes = (await getCollection("notes", ({ data }) => !data.draft && data.la
       <h1>Notas</h1>
       <p>Ensaios, análises e registros de campo sobre ciência, execução e as ideias que orientam meu trabalho.</p>
     </header>
-    <nav class="category-nav" aria-label="Categorias das notas">
-      <span aria-current="page">Todas</span>
-      <span>Fronteiras</span>
-      <span>Aplicações</span>
-      <span>Construção</span>
-      <a href="/pt/notas/leituras/">Leituras</a>
-    </nav>
-    <div class="archive-list">
+    <NoteFilters lang="pt-BR" />
+    <div class="archive-list" id="note-list">
       {
-        notes.length > 0 ? (
-          notes.map((note) => (
-            <article class="archive-item">
+        notes.map((note) => (
+            <article class="archive-item" data-note-category={note.data.category}>
               <p>{note.data.category} · {note.data.format}</p>
               <h2>{note.data.title}</h2>
               <p>{note.data.description}</p>
@@ -50,10 +44,8 @@ const notes = (await getCollection("notes", ({ data }) => !data.draft && data.la
               </time>
             </article>
           ))
-        ) : (
-          <p class="empty-state">As primeiras notas estão sendo preparadas.</p>
-        )
       }
+      <p class="empty-state" data-note-empty-state hidden={notes.length > 0}>As primeiras notas estão sendo preparadas.</p>
     </div>
   </main>
 </BaseLayout>

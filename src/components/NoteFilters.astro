@@ -1,0 +1,71 @@
+---
+interface Props {
+  lang: "en" | "pt-BR";
+}
+
+const { lang } = Astro.props;
+const isEnglish = lang === "en";
+const filters = isEnglish
+  ? [
+      { value: "all", label: "All", emptyMessage: "The first notes are being prepared." },
+      { value: "frontiers", label: "Frontiers", emptyMessage: "No frontier notes have been published yet." },
+      { value: "applications", label: "Applications", emptyMessage: "No application notes have been published yet." },
+      { value: "building", label: "Building", emptyMessage: "No building notes have been published yet." },
+    ]
+  : [
+      { value: "all", label: "Todas", emptyMessage: "As primeiras notas estão sendo preparadas." },
+      { value: "frontiers", label: "Fronteiras", emptyMessage: "Ainda não há notas publicadas em Fronteiras." },
+      { value: "applications", label: "Aplicações", emptyMessage: "Ainda não há notas publicadas em Aplicações." },
+      { value: "building", label: "Construção", emptyMessage: "Ainda não há notas publicadas em Construção." },
+    ];
+---
+
+<div class="category-nav" data-note-filter-group>
+  <div class="note-filters" role="group" aria-label={isEnglish ? "Filter notes by category" : "Filtrar notas por categoria"}>
+    {
+      filters.map((filter, index) => (
+        <button
+          type="button"
+          data-note-filter={filter.value}
+          data-empty-message={filter.emptyMessage}
+          aria-controls="note-list"
+          aria-pressed={index === 0 ? "true" : "false"}
+        >
+          {filter.label}
+        </button>
+      ))
+    }
+  </div>
+  <a href={isEnglish ? "/notes/reading/" : "/pt/notas/leituras/"}>{isEnglish ? "Reading" : "Leituras"}</a>
+  <p class="visually-hidden" data-note-filter-status aria-live="polite"></p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-note-filter-group]").forEach((group) => {
+    const archive = group.closest<HTMLElement>(".archive");
+    const buttons = group.querySelectorAll<HTMLButtonElement>("[data-note-filter]");
+    const emptyState = archive?.querySelector<HTMLElement>("[data-note-empty-state]");
+    const status = group.querySelector<HTMLElement>("[data-note-filter-status]");
+
+    if (!archive || !emptyState) return;
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedCategory = button.dataset.noteFilter ?? "all";
+        const items = archive.querySelectorAll<HTMLElement>("[data-note-category]");
+        let visibleCount = 0;
+
+        buttons.forEach((candidate) => candidate.setAttribute("aria-pressed", String(candidate === button)));
+        items.forEach((item) => {
+          const shouldShow = selectedCategory === "all" || item.dataset.noteCategory === selectedCategory;
+          item.hidden = !shouldShow;
+          if (shouldShow) visibleCount += 1;
+        });
+
+        emptyState.hidden = visibleCount > 0;
+        emptyState.textContent = button.dataset.emptyMessage ?? "";
+        if (status) status.textContent = emptyState.hidden ? `${visibleCount}` : emptyState.textContent;
+      });
+    });
+  });
+</script>

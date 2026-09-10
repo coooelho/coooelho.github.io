@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import ReadingFilters from "../../../../components/ReadingFilters.astro";
 import { site } from "../../../../config/site";
 
 const entries = (await getCollection("reading")).sort(
@@ -9,16 +10,14 @@ const entries = (await getCollection("reading")).sort(
 
 const typeLabel = {
   book: "Livro",
-  paper: "Artigo científico",
+  paper: "Paper",
   article: "Artigo",
-  "conference-paper": "Trabalho de conferência",
+  "conference-paper": "Paper de conferência",
 } as const;
-const statusLabel = { reading: "Em leitura", finished: "Concluído", reference: "Catalogado" } as const;
 const publicationLabel = (year: number, approximate: boolean) => {
   const prefix = approximate ? "c. " : "";
   return year < 0 ? `${prefix}${Math.abs(year)} a.C.` : `${prefix}${year}`;
 };
-const finishedCount = entries.filter(({ data }) => data.status === "finished").length;
 const creatorText = (creators: string[]) =>
   creators.length > 8 ? `${creators.slice(0, 2).join(", ")} e mais ${creators.length - 2}` : creators.join(", ");
 ---
@@ -42,25 +41,19 @@ const creatorText = (creators: string[]) =>
   <main id="content" class="shell archive reading-archive">
     <header class="archive-heading">
       <p class="eyebrow">Notas · Leituras</p>
-      <h1>Biblioteca de leituras</h1>
-      <p>
-        Obras que li anteriormente e pretendo revisitar. À medida que eu concluir cada releitura, publicarei aqui
-        minha nota ou resenha e atualizarei seu status.
-      </p>
-      <p class="archive-summary">{entries.length} obras no catálogo · {finishedCount} releituras concluídas</p>
+      <h1>Leituras</h1>
     </header>
-    <div class="reading-types" aria-label="Tipos de leitura">
-      <div><strong>Livros</strong><span>Argumentos que merecem ser revisitados</span></div>
-      <div><strong>Artigos científicos</strong><span>Evidências e pesquisa de fronteira</span></div>
-      <div><strong>Artigos</strong><span>Seleção de textos longos</span></div>
-    </div>
-    <div class="archive-list">
+    <ReadingFilters lang="pt-BR" />
+    <div class="archive-list" id="reading-list">
       {
         entries.length > 0 ? (
           entries.map((entry) => (
-            <article class="archive-item">
+            <article
+              class="archive-item"
+              data-reading-type={entry.data.type === "conference-paper" ? "paper" : entry.data.type}
+            >
               <p>
-                {typeLabel[entry.data.type]} · {statusLabel[entry.data.status]} · {publicationLabel(entry.data.publicationYear, entry.data.publicationYearApproximate)}
+                {typeLabel[entry.data.type]} · {publicationLabel(entry.data.publicationYear, entry.data.publicationYearApproximate)}
               </p>
               <div class="reading-entry">
                 <h2>{entry.data.titlePt ?? entry.data.title}</h2>
@@ -69,7 +62,7 @@ const creatorText = (creators: string[]) =>
                 </p>
                 <p>{entry.data.description.pt}</p>
                 {entry.data.venue && <p class="reading-venue">{entry.data.venue}</p>}
-                <a href={entry.data.sourceUrl} rel="noopener noreferrer">
+                <a href={entry.data.sourceUrl} target="_blank" rel="noopener noreferrer">
                   Ver fonte original <span aria-hidden="true">↗</span>
                 </a>
               </div>

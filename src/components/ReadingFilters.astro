@@ -1,0 +1,76 @@
+---
+interface Props {
+  lang: "en" | "pt-BR";
+}
+
+const { lang } = Astro.props;
+const isEnglish = lang === "en";
+const filters = isEnglish
+  ? [
+      { value: "all", label: "All" },
+      { value: "book", label: "Books" },
+      { value: "paper", label: "Papers" },
+      { value: "article", label: "Articles" },
+    ]
+  : [
+      { value: "all", label: "Todos" },
+      { value: "book", label: "Livros" },
+      { value: "paper", label: "Papers" },
+      { value: "article", label: "Artigos" },
+    ];
+---
+
+<div
+  class="reading-filter-bar"
+  data-reading-filter-group
+  data-result-singular={isEnglish ? "item shown" : "leitura exibida"}
+  data-result-plural={isEnglish ? "items shown" : "leituras exibidas"}
+>
+  <p>{isEnglish ? "Filter by type" : "Filtrar por tipo"}</p>
+  <div class="reading-filters" role="group" aria-label={isEnglish ? "Filter readings by type" : "Filtrar leituras por tipo"}>
+    {
+      filters.map((filter, index) => (
+        <button
+          type="button"
+          class="reading-filter"
+          data-reading-filter={filter.value}
+          aria-controls="reading-list"
+          aria-pressed={index === 0 ? "true" : "false"}
+        >
+          {filter.label}
+        </button>
+      ))
+    }
+  </div>
+  <p class="visually-hidden" data-reading-filter-status aria-live="polite"></p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-reading-filter-group]").forEach((group) => {
+    const archive = group.closest<HTMLElement>(".reading-archive");
+    const buttons = group.querySelectorAll<HTMLButtonElement>("[data-reading-filter]");
+    const items = archive?.querySelectorAll<HTMLElement>("[data-reading-type]");
+    const status = group.querySelector<HTMLElement>("[data-reading-filter-status]");
+
+    if (!items) return;
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedType = button.dataset.readingFilter ?? "all";
+        let visibleCount = 0;
+
+        buttons.forEach((candidate) => candidate.setAttribute("aria-pressed", String(candidate === button)));
+        items.forEach((item) => {
+          const shouldShow = selectedType === "all" || item.dataset.readingType === selectedType;
+          item.hidden = !shouldShow;
+          if (shouldShow) visibleCount += 1;
+        });
+
+        if (status) {
+          const label = visibleCount === 1 ? group.dataset.resultSingular : group.dataset.resultPlural;
+          status.textContent = `${visibleCount} ${label}`;
+        }
+      });
+    });
+  });
+</script>
