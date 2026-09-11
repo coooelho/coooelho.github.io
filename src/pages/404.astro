@@ -1,0 +1,54 @@
+---
+import { site } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const description = "Page not found. Página não encontrada.";
+---
+
+<BaseLayout
+  lang="en"
+  title={`Page not found / Página não encontrada — ${site.publicName}`}
+  description={description}
+  robots="noindex, follow"
+>
+  <header class="site-header shell not-found-header">
+    <a class="brand" href="/">{site.publicName}</a>
+    <nav class="language-nav" aria-label="Language / Idioma">
+      <a href="#portugues" lang="pt-BR">PT</a>
+      <span aria-hidden="true">/</span>
+      <a href="#english" lang="en">EN</a>
+    </nav>
+  </header>
+
+  <main id="content" class="shell not-found-page">
+    <p class="not-found-code" aria-hidden="true">404</p>
+    <h1>
+      Page not found.
+      <span lang="pt-BR">Página não encontrada.</span>
+    </h1>
+
+    <div class="not-found-languages">
+      <section id="english" aria-labelledby="not-found-english">
+        <p class="eyebrow">English</p>
+        <h2 id="not-found-english">This address does not lead to a published page.</h2>
+        <p>The link may be outdated, or the page may have moved.</p>
+        <nav class="not-found-links" aria-label="Continue in English">
+          <a href="/">Home</a>
+          <a href="/work/">Work</a>
+          <a href="/notes/">Notes</a>
+        </nav>
+      </section>
+
+      <section id="portugues" lang="pt-BR" aria-labelledby="not-found-portuguese">
+        <p class="eyebrow">Português</p>
+        <h2 id="not-found-portuguese">Este endereço não leva a uma página publicada.</h2>
+        <p>O link pode estar desatualizado ou a página pode ter mudado de lugar.</p>
+        <nav class="not-found-links" aria-label="Continuar em português">
+          <a href="/pt/">Início</a>
+          <a href="/pt/atuacao/">Atuação</a>
+          <a href="/pt/notas/">Notas</a>
+        </nav>
+      </section>
+    </div>
+  </main>
+</BaseLayout>

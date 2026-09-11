@@ -1,0 +1,172 @@
+---
+import SiteHeader from "../../../components/SiteHeader.astro";
+import { site } from "../../../config/site";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const description = `Política de privacidade do site pessoal de ${site.publicName}.`;
+const contactEmail = site.contactEmail as string | null;
+---
+
+<BaseLayout
+  lang="pt-BR"
+  title={`Privacidade — ${site.publicName}`}
+  description={description}
+  alternatePath="/privacy/"
+>
+  <SiteHeader lang="pt-BR" alternatePath="/privacy/" />
+  <main id="content" class="shell legal-page">
+    <header class="legal-heading">
+      <p class="eyebrow">Privacidade</p>
+      <h1>Um relato claro do que acontece quando você visita.</h1>
+      <p class="legal-intro">
+        Este é um site editorial pessoal mantido por {site.formalName}. Ele foi concebido para ser lido sem conta e
+        sem rastreamento comportamental.
+      </p>
+      <p class="legal-updated">Última atualização: <time datetime="2026-09-10">10 de setembro de 2026</time></p>
+    </header>
+
+    <div class="legal-sections">
+      <section class="legal-section" aria-labelledby="privacy-direct-data">
+        <p class="legal-section-label">01 · Coleta direta</p>
+        <div>
+          <h2 id="privacy-direct-data">Nenhuma informação é enviada diretamente por este site.</h2>
+          <p>
+            Atualmente não há contas de usuário, comentários, formulários de contato, assinatura ativa de newsletter
+            ou perfis de visitantes. O site não pede que você forneça nome, endereço de e-mail ou outros dados
+            pessoais.
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section" aria-labelledby="privacy-technical-data">
+        <p class="legal-section-label">02 · Hospedagem e segurança</p>
+        <div>
+          <h2 id="privacy-technical-data">A infraestrutura de hospedagem trata dados técnicos limitados.</h2>
+          <p>
+            Este site é entregue por meio da Cloudflare. Para disponibilizar as páginas, rotear o tráfego, prevenir
+            abusos e manter a segurança e a confiabilidade, a Cloudflare pode tratar informações como endereços IP,
+            URLs solicitadas, horários das requisições, dados de roteamento e informações de configuração do sistema.
+          </p>
+          <p>
+            As finalidades são operar e proteger o site, investigar falhas ou abusos e cumprir obrigações legais
+            quando aplicável. As bases legais pertinentes são o legítimo interesse em oferecer um site seguro e o
+            cumprimento da legislação aplicável.
+          </p>
+          <p>
+            Saiba mais na
+            <a href="https://www.cloudflare.com/policies/privacy/" target="_blank" rel="noopener noreferrer">
+              Política de Privacidade da Cloudflare<span class="visually-hidden"> (abre em uma nova aba)</span>
+            </a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section" aria-labelledby="privacy-cookies">
+        <p class="legal-section-label">03 · Cookies e análise de audiência</p>
+        <div>
+          <h2 id="privacy-cookies">Não há rastreadores de publicidade ou análise instalados.</h2>
+          <p>
+            O código da aplicação não define cookies nem utiliza armazenamento local. Conforme os recursos de
+            segurança da Cloudflare aplicados a uma requisição, a Cloudflare pode definir cookies que classifica como
+            estritamente necessários para gerenciar o tráfego ou verificar acessos legítimos. Eles não são instalados
+            por este site para publicidade ou criação de perfis de audiência.
+          </p>
+          <p>
+            A Cloudflare documenta essas tecnologias em sua
+            <a
+              href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              referência sobre cookies<span class="visually-hidden"> (abre em uma nova aba)</span>
+            </a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section" aria-labelledby="privacy-sharing">
+        <p class="legal-section-label">04 · Compartilhamento e transferências</p>
+        <div>
+          <h2 id="privacy-sharing">O tratamento técnico pode atravessar fronteiras nacionais.</h2>
+          <p>
+            A Cloudflare opera uma rede global. Por isso, dados técnicos de requisição podem ser tratados fora do país
+            em que você se encontra, sujeitos às garantias contratuais e legais da Cloudflare. Não vendo dados de
+            visitantes nem os compartilho com anunciantes. Informações só podem ser fornecidas a autoridades públicas
+            quando houver obrigação legal.
+          </p>
+          <p>
+            Não mantenho um banco de dados separado de visitantes nem uma base de análise de audiência. A retenção de
+            metadados da infraestrutura é regida pelos serviços da Cloudflare em uso, por suas configurações e pelos
+            termos aplicáveis da empresa.
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section" aria-labelledby="privacy-links">
+        <p class="legal-section-label">05 · Links externos</p>
+        <div>
+          <h2 id="privacy-links">Outros sites têm suas próprias práticas.</h2>
+          <p>
+            Notas e registros de leitura podem conter links para editoras, periódicos, instituições ou outros sites.
+            Ao visitar um desses links, você acessa um serviço regido por sua própria política de privacidade; esta
+            política não abrange as atividades desse serviço.
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section" aria-labelledby="privacy-rights">
+        <p class="legal-section-label">06 · Seus direitos</p>
+        <div>
+          <h2 id="privacy-rights">Os direitos de proteção de dados se aplicam conforme previsto em lei.</h2>
+          <p>
+            Conforme sua localização, você pode ter o direito de confirmar o tratamento, acessar, corrigir ou excluir
+            dados, solicitar portabilidade ou limitação, opor-se ao tratamento, revogar o consentimento quando
+            pertinente e recorrer à autoridade competente. Esses direitos incluem os previstos na LGPD brasileira e,
+            quando aplicável, no GDPR da União Europeia.
+          </p>
+          <p class="legal-reference-links">
+            <a
+              href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Consultar a LGPD<span class="visually-hidden"> (abre em uma nova aba)</span>
+            </a>
+            <a
+              href="https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Consultar o GDPR<span class="visually-hidden"> (abre em uma nova aba)</span>
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section legal-contact" aria-labelledby="privacy-contact">
+        <p class="legal-section-label">07 · Contato e alterações</p>
+        <div>
+          <h2 id="privacy-contact">Dúvidas sobre privacidade.</h2>
+          {
+            contactEmail ? (
+              <p>
+                Para exercer um direito ou esclarecer uma dúvida sobre privacidade, escreva para
+                <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+              </p>
+            ) : (
+              <p>
+                Um endereço de e-mail dedicado à privacidade ainda não foi publicado. Ele será adicionado aqui antes
+                que seja ativado qualquer recurso que colete informações diretamente dos visitantes.
+              </p>
+            )
+          }
+          <p>
+            Esta política será revisada se o site passar a usar análise de audiência, ativar uma newsletter, adicionar
+            um formulário de contato ou alterar de outra forma o tratamento de dados pessoais. A data no início da
+            página será atualizada a cada revisão.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+</BaseLayout>

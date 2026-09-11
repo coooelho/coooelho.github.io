@@ -1,0 +1,170 @@
+---
+import SiteHeader from "../../components/SiteHeader.astro";
+import { site } from "../../config/site";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const description = `Privacy policy for ${site.publicName}'s personal website.`;
+const contactEmail = site.contactEmail as string | null;
+---
+
+<BaseLayout
+  lang="en"
+  title={`Privacy — ${site.publicName}`}
+  description={description}
+  alternatePath="/pt/privacidade/"
+>
+  <SiteHeader lang="en" alternatePath="/pt/privacidade/" />
+  <main id="content" class="shell legal-page">
+    <header class="legal-heading">
+      <p class="eyebrow">Privacy</p>
+      <h1>A clear account of what happens when you visit.</h1>
+      <p class="legal-intro">
+        This is a personal editorial website operated by {site.formalName}. It is designed to be read without an
+        account and without behavioral tracking.
+      </p>
+      <p class="legal-updated">Last updated: <time datetime="2026-09-10">September 10, 2026</time></p>
+    </header>
+
+    <div class="legal-sections">
+      <section class="legal-section" aria-labelledby="privacy-direct-data">
+        <p class="legal-section-label">01 · Direct collection</p>
+        <div>
+          <h2 id="privacy-direct-data">No information is submitted directly through this site.</h2>
+          <p>
+            There are currently no user accounts, comments, contact forms, active newsletter subscriptions, or
+            visitor profiles. The site does not ask you to provide a name, email address, or other personal details.
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section" aria-labelledby="privacy-technical-data">
+        <p class="legal-section-label">02 · Hosting and security</p>
+        <div>
+          <h2 id="privacy-technical-data">The hosting infrastructure processes limited technical data.</h2>
+          <p>
+            This site is delivered through Cloudflare. To deliver pages, route traffic, prevent abuse, and maintain
+            security and reliability, Cloudflare may process information such as IP addresses, request URLs,
+            timestamps, traffic-routing data, and system configuration information.
+          </p>
+          <p>
+            The purposes are operating and protecting the site, investigating failures or abuse, and meeting legal
+            obligations where applicable. The relevant legal bases are legitimate interests in providing a secure
+            website and compliance with applicable law.
+          </p>
+          <p>
+            Learn more in the
+            <a href="https://www.cloudflare.com/policies/privacy/" target="_blank" rel="noopener noreferrer">
+              Cloudflare Privacy Policy<span class="visually-hidden"> (opens in a new tab)</span>
+            </a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section" aria-labelledby="privacy-cookies">
+        <p class="legal-section-label">03 · Cookies and analytics</p>
+        <div>
+          <h2 id="privacy-cookies">No advertising or analytics trackers are installed.</h2>
+          <p>
+            The site's application code does not set cookies or use local storage. Depending on the Cloudflare
+            security features applied to a request, Cloudflare may set cookies that it classifies as strictly
+            necessary to manage traffic or verify legitimate access. They are not installed by this site for
+            advertising or audience profiling.
+          </p>
+          <p>
+            Cloudflare documents those technologies on its
+            <a
+              href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              cookie reference<span class="visually-hidden"> (opens in a new tab)</span>
+            </a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section" aria-labelledby="privacy-sharing">
+        <p class="legal-section-label">04 · Sharing and transfers</p>
+        <div>
+          <h2 id="privacy-sharing">Technical processing may cross national borders.</h2>
+          <p>
+            Cloudflare operates a global network, so technical request data may be processed outside the country
+            where you are located, subject to Cloudflare's contractual and legal safeguards. I do not sell visitor
+            data or share it with advertisers. Information may be disclosed to public authorities only when legally
+            required.
+          </p>
+          <p>
+            I do not maintain a separate visitor database or analytics dataset. Retention of infrastructure metadata
+            is governed by the Cloudflare services in use, their configuration, and Cloudflare's applicable terms.
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section" aria-labelledby="privacy-links">
+        <p class="legal-section-label">05 · External links</p>
+        <div>
+          <h2 id="privacy-links">Other websites have their own practices.</h2>
+          <p>
+            Notes and reading entries may link to publishers, journals, institutions, or other external websites.
+            Visiting one of those links takes you to a service governed by its own privacy policy; this policy does
+            not cover what that service does.
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section" aria-labelledby="privacy-rights">
+        <p class="legal-section-label">06 · Your rights</p>
+        <div>
+          <h2 id="privacy-rights">Data protection rights apply where provided by law.</h2>
+          <p>
+            Depending on your location, you may have rights to confirm processing, obtain access, correct or delete
+            data, request portability or restriction, object to processing, withdraw consent where relevant, and
+            contact a supervisory authority. These rights include those established by Brazil's LGPD and, where
+            applicable, the European Union's GDPR.
+          </p>
+          <p class="legal-reference-links">
+            <a
+              href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read the LGPD<span class="visually-hidden"> (opens in a new tab)</span>
+            </a>
+            <a
+              href="https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read the GDPR<span class="visually-hidden"> (opens in a new tab)</span>
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section legal-contact" aria-labelledby="privacy-contact">
+        <p class="legal-section-label">07 · Contact and changes</p>
+        <div>
+          <h2 id="privacy-contact">Questions about privacy.</h2>
+          {
+            contactEmail ? (
+              <p>
+                To exercise a right or ask a privacy question, email
+                <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+              </p>
+            ) : (
+              <p>
+                A dedicated privacy email has not yet been published. It will be added here before any feature that
+                collects information directly from visitors is enabled.
+              </p>
+            )
+          }
+          <p>
+            This policy will be revised if the site begins using analytics, activates a newsletter, adds a contact
+            form, or otherwise changes how personal data is processed. The update date at the top will change with
+            each revision.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+</BaseLayout>

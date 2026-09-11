@@ -1,0 +1,24 @@
+---
+import { site } from "../config/site";
+
+interface Props {
+  lang: "en" | "pt-BR";
+}
+
+const { lang } = Astro.props;
+const isEnglish = lang === "en";
+const privacyPath = isEnglish ? "/privacy/" : "/pt/privacidade/";
+const isPrivacyPage = Astro.url.pathname === privacyPath;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="shell site-footer-inner">
+    <p>© {year} {site.publicName}</p>
+    <nav aria-label={isEnglish ? "Footer navigation" : "Navegação do rodapé"}>
+      <a href={privacyPath} aria-current={isPrivacyPage ? "page" : undefined}>
+        {isEnglish ? "Privacy" : "Privacidade"}
+      </a>
+    </nav>
+  </div>
+</footer>
