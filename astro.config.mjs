@@ -7,7 +7,7 @@ const isGitHubPagesBuild = process.env.GITHUB_ACTIONS === "true" && !siteUrl;
 export default defineConfig({
   output: "static",
   site: siteUrl || (isGitHubPagesBuild ? "https://coooelho.github.io" : undefined),
-  base: isGitHubPagesBuild ? "/PersonalWebSite" : "/",
+  base: "/",
   integrations: siteUrl || isGitHubPagesBuild ? [sitemap()] : [],
   i18n: {
     defaultLocale: "en",
