@@ -4,7 +4,9 @@ description: "Uma frase que explique por que este artigo importa."
 publishedAt: 2026-09-16
 language: pt-BR
 translationKey: identificador-compartilhado
-category: frontiers
+# Opções: pedeaqui, foton, research ou business.
+category: research
+tags: []
 format: note
 featured: false
 draft: true

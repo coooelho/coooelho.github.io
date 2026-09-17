@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
+import WorkFilters from "../../components/WorkFilters.astro";
 import { site } from "../../config/site";
 import { withBase } from "../../lib/paths";
 
@@ -24,6 +25,8 @@ const description =
         operations and connecting quantum science with international cooperation, funding, and markets.
       </p>
     </header>
+
+    <WorkFilters lang="en" />
 
     <div class="work-list">
       <article class="work-organization" id="pedeaqui">
@@ -58,6 +61,7 @@ const description =
             <li>Restaurant validation</li>
           </ul>
           <p class="work-availability">Public website in preparation.</p>
+          <a class="work-link" href={withBase("/work/pedeaqui/")}>Read PedeAqui articles <span aria-hidden="true">→</span></a>
         </div>
       </article>
 
@@ -90,9 +94,8 @@ const description =
             <li>International positioning</li>
             <li>Funding and market pathways</li>
           </ul>
-          <a class="work-link" href="https://www.ictqfoton.org/" target="_blank" rel="noopener noreferrer">
-            Visit ICTQ Foton <span aria-hidden="true">↗</span>
-          </a>
+          <p class="work-availability">New public website in development.</p>
+          <a class="work-link" href={withBase("/work/foton/")}>Read ICTQ Foton articles <span aria-hidden="true">→</span></a>
         </div>
       </article>
     </div>

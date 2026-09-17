@@ -1,0 +1,30 @@
+---
+import { withBase } from "../lib/paths";
+
+interface Props {
+  lang: "en" | "pt-BR";
+  current?: "all" | "pedeaqui" | "foton";
+}
+
+const { lang, current = "all" } = Astro.props;
+const isEnglish = lang === "en";
+const links = isEnglish
+  ? [
+      { value: "all", label: "Overview", href: "/work/" },
+      { value: "pedeaqui", label: "PedeAqui", href: "/work/pedeaqui/" },
+      { value: "foton", label: "ICTQ Foton", href: "/work/foton/" },
+    ]
+  : [
+      { value: "all", label: "Visão geral", href: "/pt/atuacao/" },
+      { value: "pedeaqui", label: "PedeAqui", href: "/pt/atuacao/pedeaqui/" },
+      { value: "foton", label: "ICTQ Foton", href: "/pt/atuacao/foton/" },
+    ];
+---
+
+<nav class="category-nav" aria-label={isEnglish ? "Browse work" : "Explorar trabalhos"}>
+  {
+    links.map((link) => (
+      <a href={withBase(link.href)} aria-current={current === link.value ? "page" : undefined}>{link.label}</a>
+    ))
+  }
+</nav>

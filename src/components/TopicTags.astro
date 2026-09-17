@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getTopicLabel, getTopicPath } from "../lib/notes";
+
+interface Props {
+  note: CollectionEntry<"notes">;
+}
+
+const { note } = Astro.props;
+const label = note.data.language === "en" ? "Related topics" : "Temas relacionados";
+---
+
+{
+  note.data.tags.length > 0 && (
+    <ul class="topic-tags" aria-label={label}>
+      {note.data.tags.map((topic) => (
+        <li><a href={getTopicPath(topic, note.data.language)}>{getTopicLabel(topic, note.data.language)}</a></li>
+      ))}
+    </ul>
+  )
+}

@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+import TopicPage from "../../../components/TopicPage.astro";
+import { isCategoryTopic } from "../../../lib/notes";
+
+export async function getStaticPaths() {
+  const notes = await getCollection("notes", ({ data }) => !data.draft);
+  const topics = [...new Set(notes.flatMap((note) => note.data.tags))].filter((topic) => !isCategoryTopic(topic));
+  return topics.map((topic) => ({ params: { topic }, props: { topic } }));
+}
+
+interface Props { topic: string; }
+const { topic } = Astro.props;
+---
+
+<TopicPage lang="pt-BR" topic={topic} />

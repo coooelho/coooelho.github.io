@@ -1,0 +1,18 @@
+---
+import ReadingPage from "../../../components/ReadingPage.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { section: "books" }, props: { category: "books" as const } },
+    { params: { section: "articles" }, props: { category: "articles" as const } },
+  ];
+}
+
+interface Props {
+  category: "books" | "articles";
+}
+
+const { category } = Astro.props;
+---
+
+<ReadingPage lang="en" category={category} />

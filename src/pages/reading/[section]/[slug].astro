@@ -1,0 +1,24 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import ArticleLayout from "../../../layouts/ArticleLayout.astro";
+import { findTranslation, getNotePath, getNoteSlug } from "../../../lib/notes";
+
+export async function getStaticPaths() {
+  const notes = await getCollection("notes", ({ data }) => !data.draft);
+  return notes
+    .filter((note) => note.data.language === "en" && (note.data.category === "books" || note.data.category === "articles"))
+    .map((note) => {
+      const translation = findTranslation(note, notes);
+      const ptSection = note.data.category === "books" ? "livros" : "artigos";
+      return {
+        params: { section: note.data.category, slug: getNoteSlug(note) },
+        props: { note, alternatePath: translation ? getNotePath(translation) : `/pt/leituras/${ptSection}/` },
+      };
+    });
+}
+
+interface Props { note: CollectionEntry<"notes">; alternatePath: string; }
+const { note, alternatePath } = Astro.props;
+---
+
+<ArticleLayout note={note} alternatePath={alternatePath} />

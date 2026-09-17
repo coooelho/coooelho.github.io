@@ -1,0 +1,18 @@
+---
+import NotesPage from "../../../../components/NotesPage.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { section: "pesquisa" }, props: { category: "research" as const } },
+    { params: { section: "negocios" }, props: { category: "business" as const } },
+  ];
+}
+
+interface Props {
+  category: "research" | "business";
+}
+
+const { category } = Astro.props;
+---
+
+<NotesPage lang="pt-BR" category={category} />

@@ -3,9 +3,16 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getCollection, render } from "astro:content";
 import SiteHeader from "../components/SiteHeader.astro";
+import TopicTags from "../components/TopicTags.astro";
 import { site } from "../config/site";
-import { getCategoryLabel, getFormatLabel, getNoteDate } from "../lib/notes";
-import { withBase } from "../lib/paths";
+import {
+  getCategoryLabel,
+  getFormatLabel,
+  getNoteArchivePath,
+  getNoteDate,
+  isReadingNote,
+  isWorkNote,
+} from "../lib/notes";
 import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
@@ -16,7 +23,9 @@ interface Props {
 const { note, alternatePath } = Astro.props;
 const { Content } = await render(note);
 const isEnglish = note.data.language === "en";
-const archivePath = withBase(isEnglish ? "/notes/" : "/pt/notas/");
+const readingNote = isReadingNote(note);
+const workNote = isWorkNote(note);
+const archivePath = getNoteArchivePath(note);
 const sourceLabel = isEnglish ? "Sources" : "Fontes";
 const normalizeReadingId = (value: string) => value.replace(/\.json$/, "");
 const readingEntries = note.data.readingId ? await getCollection("reading") : [];
@@ -50,9 +59,15 @@ const creatorText = readingEntry?.data.creators.join(", ");
   description={note.data.description}
   alternatePath={alternatePath}
 >
-  <SiteHeader lang={note.data.language} alternatePath={alternatePath} current="notes" />
+  <SiteHeader
+    lang={note.data.language}
+    alternatePath={alternatePath}
+    current={readingNote ? "reading" : workNote ? "work" : "notes"}
+  />
   <main id="content" class="shell article-page">
-    <a class="article-back" href={archivePath}>← {isEnglish ? "All notes" : "Todas as notas"}</a>
+    <a class="article-back" href={archivePath}>
+      ← {isEnglish ? "All in" : "Tudo em"} {getCategoryLabel(note)}
+    </a>
     <header class="article-header">
       <p class="eyebrow">{getCategoryLabel(note)} · {getFormatLabel(note)}</p>
       <h1>{note.data.title}</h1>
@@ -70,6 +85,7 @@ const creatorText = readingEntry?.data.creators.join(", ");
           )
         }
       </div>
+      <TopicTags note={note} />
     </header>
 
     {

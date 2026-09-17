@@ -1,0 +1,154 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ReadingFilters from "./ReadingFilters.astro";
+import SiteHeader from "./SiteHeader.astro";
+import TopicTags from "./TopicTags.astro";
+import { site } from "../config/site";
+import { getNotePath } from "../lib/notes";
+
+interface Props {
+  lang: "en" | "pt-BR";
+  category?: "books" | "articles";
+}
+
+const { lang, category } = Astro.props;
+const isEnglish = lang === "en";
+const entries = (await getCollection("reading"))
+  .filter((entry) => !category || (category === "books" ? entry.data.type === "book" : entry.data.type !== "book"))
+  .sort((a, b) => b.data.publicationYear - a.data.publicationYear || a.data.title.localeCompare(b.data.title));
+const readingNotes = await getCollection(
+  "notes",
+  ({ data }) =>
+    !data.draft &&
+    data.language === lang &&
+    (data.category === "books" || data.category === "articles" || data.tags.includes("books") || data.tags.includes("articles")) &&
+    Boolean(data.readingId),
+);
+const normalizeReadingId = (value: string) => value.replace(/\.json$/, "");
+const findReadingNote = (readingId: string) =>
+  readingNotes.find((note) => normalizeReadingId(note.data.readingId!) === normalizeReadingId(readingId));
+const typeLabel = isEnglish
+  ? {
+      book: "Book",
+      paper: "Research paper",
+      article: "Article",
+      "conference-paper": "Conference paper",
+    }
+  : {
+      book: "Livro",
+      paper: "Artigo científico",
+      article: "Artigo",
+      "conference-paper": "Artigo de conferência",
+    };
+const publicationLabel = (year: number, approximate: boolean) => {
+  const prefix = approximate ? "c. " : "";
+  if (year >= 0) return `${prefix}${year}`;
+  return `${prefix}${Math.abs(year)} ${isEnglish ? "BCE" : "a.C."}`;
+};
+const creatorText = (creators: string[]) => {
+  if (creators.length <= 8) return creators.join(", ");
+  return isEnglish
+    ? `${creators.slice(0, 2).join(", ")} and ${creators.length - 2} others`
+    : `${creators.slice(0, 2).join(", ")} e mais ${creators.length - 2}`;
+};
+const pageCopy = isEnglish
+  ? {
+      all: {
+        title: "Reading",
+        eyebrow: "Books · Articles",
+        description: "Books and articles I have read, with links to my notes when I have published a comment.",
+      },
+      books: {
+        title: "Books",
+        eyebrow: "Reading · Books",
+        description: "Books I have read, with brief comments on the ideas that stood out.",
+      },
+      articles: {
+        title: "Articles",
+        eyebrow: "Reading · Articles",
+        description: "Scientific papers and long-form articles I have read, with brief comments when published.",
+      },
+    }
+  : {
+      all: {
+        title: "Leituras",
+        eyebrow: "Livros · Artigos",
+        description: "Livros e artigos que li, com acesso às minhas notas quando houver um comentário publicado.",
+      },
+      books: {
+        title: "Livros",
+        eyebrow: "Leituras · Livros",
+        description: "Livros que li, acompanhados de comentários breves sobre as ideias que se destacaram.",
+      },
+      articles: {
+        title: "Artigos",
+        eyebrow: "Leituras · Artigos",
+        description: "Artigos científicos e textos longos que li, acompanhados de comentários breves quando publicados.",
+      },
+    };
+const page = pageCopy[category ?? "all"];
+const alternatePaths = isEnglish
+  ? { all: "/pt/leituras/", books: "/pt/leituras/livros/", articles: "/pt/leituras/artigos/" }
+  : { all: "/reading/", books: "/reading/books/", articles: "/reading/articles/" };
+const alternatePath = alternatePaths[category ?? "all"];
+---
+
+<BaseLayout
+  lang={lang}
+  title={`${page.title} — ${site.publicName}`}
+  description={page.description}
+  alternatePath={alternatePath}
+>
+  <SiteHeader lang={lang} alternatePath={alternatePath} current="reading" />
+  <main id="content" class="shell archive reading-archive">
+    <header class="archive-heading">
+      <p class="eyebrow">{page.eyebrow}</p>
+      <h1>{page.title}</h1>
+      <p>{page.description}</p>
+    </header>
+    <ReadingFilters lang={lang} current={category ?? "all"} />
+    <div class="archive-list" id="reading-list">
+      {
+        entries.length > 0 ? (
+          entries.map((entry) => {
+            const readingNote = findReadingNote(entry.id);
+
+            return (
+              <article class="archive-item" data-reading-type={entry.data.type === "book" ? "book" : "article"}>
+                <p>
+                  {typeLabel[entry.data.type]} · {publicationLabel(
+                    entry.data.publicationYear,
+                    entry.data.publicationYearApproximate,
+                  )}
+                </p>
+                <div class="reading-entry">
+                  <h2>{isEnglish ? entry.data.title : (entry.data.titlePt ?? entry.data.title)}</h2>
+                  <p class="reading-creator">
+                    {entry.data.creatorRole === "editor" && (isEnglish ? "Edited by " : "Organização: ")}
+                    {creatorText(entry.data.creators)}
+                  </p>
+                  <p>{isEnglish ? entry.data.description.en : entry.data.description.pt}</p>
+                  {entry.data.venue && <p class="reading-venue">{entry.data.venue}</p>}
+                  <div class="reading-entry-actions">
+                    {readingNote && (
+                      <a href={getNotePath(readingNote)}>
+                        {isEnglish ? "Read my note" : "Leia minha nota"} <span aria-hidden="true">→</span>
+                      </a>
+                    )}
+                    <a href={entry.data.sourceUrl} target="_blank" rel="noopener noreferrer">
+                      {isEnglish ? "View original source" : "Ver fonte original"} <span aria-hidden="true">↗</span>
+                    </a>
+                  </div>
+                  {readingNote && <TopicTags note={readingNote} />}
+                </div>
+              </article>
+            );
+          })
+        ) : (
+          <p class="empty-state">{isEnglish ? "The first readings are being prepared." : "As primeiras leituras estão sendo preparadas."}</p>
+        )
+      }
+    </div>
+  </main>
+</BaseLayout>

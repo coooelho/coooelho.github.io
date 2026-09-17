@@ -5,26 +5,19 @@ import { findTranslation, getNotePath, getNoteSlug } from "../../../lib/notes";
 
 export async function getStaticPaths() {
   const notes = await getCollection("notes", ({ data }) => !data.draft);
-
   return notes
-    .filter((note) => note.data.language === "pt-BR")
+    .filter((note) => note.data.language === "en" && (note.data.category === "research" || note.data.category === "business"))
     .map((note) => {
       const translation = findTranslation(note, notes);
+      const ptSection = note.data.category === "research" ? "pesquisa" : "negocios";
       return {
-        params: { slug: getNoteSlug(note) },
-        props: {
-          note,
-          alternatePath: translation ? getNotePath(translation) : "/notes/",
-        },
+        params: { section: note.data.category, slug: getNoteSlug(note) },
+        props: { note, alternatePath: translation ? getNotePath(translation) : `/pt/notas/${ptSection}/` },
       };
     });
 }
 
-interface Props {
-  note: CollectionEntry<"notes">;
-  alternatePath: string;
-}
-
+interface Props { note: CollectionEntry<"notes">; alternatePath: string; }
 const { note, alternatePath } = Astro.props;
 ---
 

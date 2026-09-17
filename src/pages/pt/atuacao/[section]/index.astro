@@ -1,0 +1,18 @@
+---
+import WorkNotesPage from "../../../../components/WorkNotesPage.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { section: "pedeaqui" }, props: { category: "pedeaqui" as const } },
+    { params: { section: "foton" }, props: { category: "foton" as const } },
+  ];
+}
+
+interface Props {
+  category: "pedeaqui" | "foton";
+}
+
+const { category } = Astro.props;
+---
+
+<WorkNotesPage lang="pt-BR" category={category} />

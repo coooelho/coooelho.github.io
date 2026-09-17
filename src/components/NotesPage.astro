@@ -1,0 +1,100 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "./SiteHeader.astro";
+import NoteFilters from "./NoteFilters.astro";
+import TopicTags from "./TopicTags.astro";
+import { site } from "../config/site";
+import { getCategoryLabel, getFormatLabel, getNoteDate, getNotePath } from "../lib/notes";
+
+interface Props {
+  lang: "en" | "pt-BR";
+  category?: "research" | "business";
+}
+
+const { lang, category } = Astro.props;
+const isEnglish = lang === "en";
+const notes = (await getCollection(
+  "notes",
+  ({ data }) =>
+    !data.draft &&
+    data.language === lang &&
+    (data.category === "research" || data.category === "business" || data.tags.includes("research") || data.tags.includes("business")) &&
+    (!category || data.category === category || data.tags.includes(category)),
+)).sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const copy = isEnglish
+  ? {
+      all: {
+        title: "Notes",
+        eyebrow: "Applied Frontier",
+        description: "Research, analysis, and business notes on frontier science, technology, and execution.",
+        empty: "The first notes are being prepared.",
+      },
+      research: {
+        title: "Research",
+        eyebrow: "Notes · Research",
+        description: "Research in progress, scientific questions, methods, and findings from my own work.",
+        empty: "The first research notes are being prepared.",
+      },
+      business: {
+        title: "Business",
+        eyebrow: "Notes · Business",
+        description: "Notes on strategy, organizations, markets, and execution beyond a single venture.",
+        empty: "The first business notes are being prepared.",
+      },
+    }
+  : {
+      all: {
+        title: "Notas",
+        eyebrow: "Fronteira Aplicada",
+        description: "Pesquisas, análises e notas de negócios sobre ciência de fronteira, tecnologia e execução.",
+        empty: "As primeiras notas estão sendo preparadas.",
+      },
+      research: {
+        title: "Pesquisa",
+        eyebrow: "Notas · Pesquisa",
+        description: "Pesquisas em andamento, perguntas científicas, métodos e resultados do meu próprio trabalho.",
+        empty: "As primeiras notas de pesquisa estão sendo preparadas.",
+      },
+      business: {
+        title: "Negócios",
+        eyebrow: "Notas · Negócios",
+        description: "Notas sobre estratégia, organizações, mercados e execução para além de um único empreendimento.",
+        empty: "As primeiras notas de negócios estão sendo preparadas.",
+      },
+    };
+const page = copy[category ?? "all"];
+const alternatePaths = isEnglish
+  ? { all: "/pt/notas/", research: "/pt/notas/pesquisa/", business: "/pt/notas/negocios/" }
+  : { all: "/notes/", research: "/notes/research/", business: "/notes/business/" };
+const alternatePath = alternatePaths[category ?? "all"];
+---
+
+<BaseLayout lang={lang} title={`${page.title} — ${site.publicName}`} description={page.description} alternatePath={alternatePath}>
+  <SiteHeader lang={lang} alternatePath={alternatePath} current="notes" />
+  <main id="content" class="shell archive">
+    <header class="archive-heading">
+      <p class="eyebrow">{page.eyebrow}</p>
+      <h1>{page.title}</h1>
+      <p>{page.description}</p>
+    </header>
+    <NoteFilters lang={lang} current={category ?? "all"} />
+    <div class="archive-list">
+      {
+        notes.length > 0 ? (
+          notes.map((note) => (
+            <article class="archive-item archive-item-with-topics">
+              <p>{getCategoryLabel(note)} · {getFormatLabel(note)}</p>
+              <h2><a href={getNotePath(note)}>{note.data.title}</a></h2>
+              <p>{note.data.description}</p>
+              <TopicTags note={note} />
+              <time datetime={note.data.publishedAt.toISOString()}>{getNoteDate(note)}</time>
+            </article>
+          ))
+        ) : (
+          <p class="empty-state">{page.empty}</p>
+        )
+      }
+    </div>
+  </main>
+</BaseLayout>

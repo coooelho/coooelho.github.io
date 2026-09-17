@@ -66,7 +66,8 @@ description: "${copy.description}"
 publishedAt: ${today}
 language: ${language.frontmatter}
 translationKey: ${slug}
-category: frontiers
+category: research
+tags: []
 format: note
 featured: false
 draft: true

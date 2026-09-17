@@ -4,7 +4,9 @@ description: "Uma frase que explique por que esta leitura importa."
 publishedAt: 2026-08-30
 language: pt-BR
 translationKey: identificador-compartilhado
-category: reading
+# Use books para livros e articles para artigos ou papers lidos.
+category: books
+tags: []
 format: reading-note
 featured: false
 draft: true

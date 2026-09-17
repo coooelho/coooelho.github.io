@@ -1,0 +1,53 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "./SiteHeader.astro";
+import TopicTags from "./TopicTags.astro";
+import { site } from "../config/site";
+import { getCategoryLabel, getFormatLabel, getNoteDate, getNotePath, getTopicLabel } from "../lib/notes";
+
+interface Props {
+  lang: "en" | "pt-BR";
+  topic: string;
+}
+
+const { lang, topic } = Astro.props;
+const isEnglish = lang === "en";
+const title = getTopicLabel(topic, lang);
+const notes = (await getCollection(
+  "notes",
+  ({ data }) => !data.draft && data.language === lang && data.tags.includes(topic),
+)).sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const alternatePath = isEnglish ? `/pt/topicos/${topic}/` : `/topics/${topic}/`;
+const description = isEnglish
+  ? `Public notes connected to ${title}.`
+  : `Publicações relacionadas a ${title}.`;
+---
+
+<BaseLayout lang={lang} title={`${title} — ${site.publicName}`} description={description} alternatePath={alternatePath}>
+  <SiteHeader lang={lang} alternatePath={alternatePath} />
+  <main id="content" class="shell archive">
+    <header class="archive-heading">
+      <p class="eyebrow">{isEnglish ? "Topic" : "Tema"}</p>
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </header>
+    <div class="archive-list">
+      {
+        notes.length > 0 ? (
+          notes.map((note) => (
+            <article class="archive-item archive-item-with-topics">
+              <p>{getCategoryLabel(note)} · {getFormatLabel(note)}</p>
+              <h2><a href={getNotePath(note)}>{note.data.title}</a></h2>
+              <p>{note.data.description}</p>
+              <TopicTags note={note} />
+              <time datetime={note.data.publishedAt.toISOString()}>{getNoteDate(note)}</time>
+            </article>
+          ))
+        ) : (
+          <p class="empty-state">{isEnglish ? "No public notes are connected to this topic yet." : "Ainda não há publicações ligadas a este tema."}</p>
+        )
+      }
+    </div>
+  </main>
+</BaseLayout>

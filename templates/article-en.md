@@ -4,7 +4,9 @@ description: "One sentence explaining why this article matters."
 publishedAt: 2026-09-16
 language: en
 translationKey: shared-identifier
-category: frontiers
+# Options: pedeaqui, foton, research, or business.
+category: research
+tags: []
 format: note
 featured: false
 draft: true
