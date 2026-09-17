@@ -52,14 +52,16 @@ Antes do texto ficam os metadados:
 - `publishedAt`: data de publicação no formato `AAAA-MM-DD`;
 - `language`: `en` ou `pt-BR`;
 - `translationKey`: mesmo identificador nas duas versões do mesmo artigo;
-- `category`: `frontiers`, `applications`, `building` ou `reading`;
+- `category`: escolha o filtro principal da nota: `pedeaqui`, `foton`, `reading`, `visits-partnerships` ou `frontiers`;
 - `format`: `signal`, `note`, `analysis`, `building-journal`, `thesis` ou `reading-note`;
 - `featured`: reserva o artigo para futuros destaques da homepage;
 - `draft`: controla se o artigo está público;
 - `sources`: lista opcional de URLs citadas;
 - `disclosure`: aviso opcional sobre vínculo ou conflito de interesse;
 - `updatedAt`: data opcional da última atualização;
-- `readingId`: identificador opcional de uma obra do catálogo de leituras.
+- `readingId`: identificador da obra no catálogo; use-o nas notas de leitura para exibir automaticamente título, autoria, ano, descrição e fonte original.
+
+As notas de leitura aparecem no arquivo geral sob o filtro **Notas de leitura**. A página **Obras lidas** permanece como catálogo e passa a apontar para seu comentário sempre que houver uma nota publicada com o mesmo `readingId`.
 
 Se houver imagem principal, coloque o arquivo em `src/assets/notes/` e acrescente:
 

@@ -12,22 +12,8 @@ sources: []
 readingId: identificador-do-arquivo-no-catalogo
 ---
 
-## A ideia central
+Escreva um comentário breve sobre a leitura e a ideia que mais chamou sua atenção.
 
-Resuma o argumento principal com suas próprias palavras.
+## O que ficou comigo
 
-## O que mudou ou confirmou no meu pensamento
-
-Explique a consequência intelectual da leitura.
-
-## Onde discordo ou tenho dúvidas
-
-Registre limites, lacunas e perguntas abertas.
-
-## Aplicação
-
-Conecte a leitura à ciência, ao PedeAqui, ao ICTQ Foton ou à construção empresarial quando houver uma relação real.
-
-## Para quem recomendo
-
-Indique quem se beneficiaria da leitura e em qual contexto.
+Registre a principal reflexão, discordância ou aplicação que surgiu da obra.

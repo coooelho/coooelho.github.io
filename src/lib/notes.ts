@@ -10,12 +10,18 @@ const categoryLabels = {
     applications: "Applications",
     building: "Building",
     reading: "Reading",
+    pedeaqui: "PedeAqui",
+    foton: "ICTQ Foton",
+    "visits-partnerships": "Visits and partnerships",
   },
   "pt-BR": {
     frontiers: "Fronteiras",
     applications: "Aplicações",
     building: "Construção",
     reading: "Leituras",
+    pedeaqui: "PedeAqui",
+    foton: "ICTQ Foton",
+    "visits-partnerships": "Visitas e parcerias",
   },
 } as const;
 

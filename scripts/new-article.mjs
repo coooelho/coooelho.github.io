@@ -66,7 +66,7 @@ description: "${copy.description}"
 publishedAt: ${today}
 language: ${language.frontmatter}
 translationKey: ${slug}
-category: applications
+category: frontiers
 format: note
 featured: false
 draft: true

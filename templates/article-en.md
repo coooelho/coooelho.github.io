@@ -4,7 +4,7 @@ description: "One sentence explaining why this article matters."
 publishedAt: 2026-09-16
 language: en
 translationKey: shared-identifier
-category: applications
+category: frontiers
 format: note
 featured: false
 draft: true

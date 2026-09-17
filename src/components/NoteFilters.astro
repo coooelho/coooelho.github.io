@@ -10,15 +10,27 @@ const isEnglish = lang === "en";
 const filters = isEnglish
   ? [
       { value: "all", label: "All", emptyMessage: "The first notes are being prepared." },
+      { value: "pedeaqui", label: "PedeAqui", emptyMessage: "No PedeAqui notes have been published yet." },
+      { value: "foton", label: "ICTQ Foton", emptyMessage: "No ICTQ Foton notes have been published yet." },
+      { value: "reading", label: "Reading notes", emptyMessage: "No reading notes have been published yet." },
+      {
+        value: "visits-partnerships",
+        label: "Visits and partnerships",
+        emptyMessage: "No visit or partnership notes have been published yet.",
+      },
       { value: "frontiers", label: "Frontiers", emptyMessage: "No frontier notes have been published yet." },
-      { value: "applications", label: "Applications", emptyMessage: "No application notes have been published yet." },
-      { value: "building", label: "Building", emptyMessage: "No building notes have been published yet." },
     ]
   : [
       { value: "all", label: "Todas", emptyMessage: "As primeiras notas estão sendo preparadas." },
+      { value: "pedeaqui", label: "PedeAqui", emptyMessage: "Ainda não há notas publicadas sobre o PedeAqui." },
+      { value: "foton", label: "ICTQ Foton", emptyMessage: "Ainda não há notas publicadas sobre o ICTQ Foton." },
+      { value: "reading", label: "Notas de leitura", emptyMessage: "Ainda não há notas de leitura publicadas." },
+      {
+        value: "visits-partnerships",
+        label: "Visitas e parcerias",
+        emptyMessage: "Ainda não há notas publicadas sobre visitas ou parcerias.",
+      },
       { value: "frontiers", label: "Fronteiras", emptyMessage: "Ainda não há notas publicadas em Fronteiras." },
-      { value: "applications", label: "Aplicações", emptyMessage: "Ainda não há notas publicadas em Aplicações." },
-      { value: "building", label: "Construção", emptyMessage: "Ainda não há notas publicadas em Construção." },
     ];
 ---
 
@@ -38,7 +50,9 @@ const filters = isEnglish
       ))
     }
   </div>
-  <a href={withBase(isEnglish ? "/notes/reading/" : "/pt/notas/leituras/")}>{isEnglish ? "Reading" : "Leituras"}</a>
+  <a class="reading-catalog-link" href={withBase(isEnglish ? "/notes/reading/" : "/pt/notas/leituras/")}>
+    {isEnglish ? "Reading catalog" : "Obras lidas"} <span aria-hidden="true">→</span>
+  </a>
   <p class="visually-hidden" data-note-filter-status aria-live="polite"></p>
 </div>
 

@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import { render } from "astro:content";
+import { getCollection, render } from "astro:content";
 import SiteHeader from "../components/SiteHeader.astro";
 import { site } from "../config/site";
 import { getCategoryLabel, getFormatLabel, getNoteDate } from "../lib/notes";
@@ -18,6 +18,30 @@ const { Content } = await render(note);
 const isEnglish = note.data.language === "en";
 const archivePath = withBase(isEnglish ? "/notes/" : "/pt/notas/");
 const sourceLabel = isEnglish ? "Sources" : "Fontes";
+const normalizeReadingId = (value: string) => value.replace(/\.json$/, "");
+const readingEntries = note.data.readingId ? await getCollection("reading") : [];
+const readingEntry = note.data.readingId
+  ? readingEntries.find((entry) => normalizeReadingId(entry.id) === normalizeReadingId(note.data.readingId!))
+  : undefined;
+const readingTypeLabels = isEnglish
+  ? {
+      book: "Book",
+      paper: "Research paper",
+      article: "Article",
+      "conference-paper": "Conference paper",
+    }
+  : {
+      book: "Livro",
+      paper: "Artigo científico",
+      article: "Artigo",
+      "conference-paper": "Artigo de conferência",
+    };
+const publicationLabel = (year: number, approximate: boolean) => {
+  const prefix = approximate ? "c. " : "";
+  if (year >= 0) return `${prefix}${year}`;
+  return `${prefix}${Math.abs(year)} ${isEnglish ? "BCE" : "a.C."}`;
+};
+const creatorText = readingEntry?.data.creators.join(", ");
 ---
 
 <BaseLayout
@@ -58,6 +82,32 @@ const sourceLabel = isEnglish ? "Sources" : "Fontes";
             sizes="(max-width: 900px) calc(100vw - 40px), 900px"
           />
         </figure>
+      )
+    }
+
+    {
+      readingEntry && (
+        <aside class="reading-source-card" aria-labelledby="reading-source-title">
+          <p class="eyebrow">{isEnglish ? "About the work" : "Sobre a obra"}</p>
+          <h2 id="reading-source-title">
+            {isEnglish ? readingEntry.data.title : (readingEntry.data.titlePt ?? readingEntry.data.title)}
+          </h2>
+          <p class="reading-source-creator">
+            {readingEntry.data.creatorRole === "editor" && (isEnglish ? "Edited by " : "Organização: ")}
+            {creatorText}
+          </p>
+          <p class="reading-source-meta">
+            {readingTypeLabels[readingEntry.data.type]} · {publicationLabel(
+              readingEntry.data.publicationYear,
+              readingEntry.data.publicationYearApproximate,
+            )}
+            {readingEntry.data.venue && ` · ${readingEntry.data.venue}`}
+          </p>
+          <p>{isEnglish ? readingEntry.data.description.en : readingEntry.data.description.pt}</p>
+          <a href={readingEntry.data.sourceUrl} target="_blank" rel="noopener noreferrer">
+            {isEnglish ? "View original source" : "Ver fonte original"} <span aria-hidden="true">↗</span>
+          </a>
+        </aside>
       )
     }
 
