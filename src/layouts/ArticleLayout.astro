@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import SiteHeader from "../components/SiteHeader.astro";
+import { site } from "../config/site";
+import { getCategoryLabel, getFormatLabel, getNoteDate } from "../lib/notes";
+import { withBase } from "../lib/paths";
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  note: CollectionEntry<"notes">;
+  alternatePath: string;
+}
+
+const { note, alternatePath } = Astro.props;
+const { Content } = await render(note);
+const isEnglish = note.data.language === "en";
+const archivePath = withBase(isEnglish ? "/notes/" : "/pt/notas/");
+const sourceLabel = isEnglish ? "Sources" : "Fontes";
+---
+
+<BaseLayout
+  lang={note.data.language}
+  title={`${note.data.title} — ${site.publicName}`}
+  description={note.data.description}
+  alternatePath={alternatePath}
+>
+  <SiteHeader lang={note.data.language} alternatePath={alternatePath} current="notes" />
+  <main id="content" class="shell article-page">
+    <a class="article-back" href={archivePath}>← {isEnglish ? "All notes" : "Todas as notas"}</a>
+    <header class="article-header">
+      <p class="eyebrow">{getCategoryLabel(note)} · {getFormatLabel(note)}</p>
+      <h1>{note.data.title}</h1>
+      <p class="article-description">{note.data.description}</p>
+      <div class="article-dates">
+        <time datetime={note.data.publishedAt.toISOString()}>{getNoteDate(note)}</time>
+        {
+          note.data.updatedAt && (
+            <span>
+              {isEnglish ? "Updated" : "Atualizado em"} {note.data.updatedAt.toLocaleDateString(note.data.language, {
+                dateStyle: "long",
+                timeZone: "UTC",
+              })}
+            </span>
+          )
+        }
+      </div>
+    </header>
+
+    {
+      note.data.heroImage && (
+        <figure class="article-hero-image">
+          <Image
+            src={note.data.heroImage}
+            alt={note.data.heroImageAlt ?? ""}
+            widths={[720, 1080, 1440]}
+            sizes="(max-width: 900px) calc(100vw - 40px), 900px"
+          />
+        </figure>
+      )
+    }
+
+    <article class="article-body">
+      <Content />
+    </article>
+
+    {
+      note.data.disclosure && (
+        <aside class="article-disclosure">
+          <strong>{isEnglish ? "Disclosure" : "Transparência"}</strong>
+          <p>{note.data.disclosure}</p>
+        </aside>
+      )
+    }
+
+    {
+      note.data.sources.length > 0 && (
+        <section class="article-sources" aria-labelledby="article-sources-title">
+          <h2 id="article-sources-title">{sourceLabel}</h2>
+          <ol>
+            {note.data.sources.map((source) => (
+              <li><a href={source} rel="noreferrer">{new URL(source).hostname.replace(/^www\./, "")}</a></li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
+  </main>
+</BaseLayout>

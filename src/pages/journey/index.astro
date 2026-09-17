@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import { site } from "../../config/site";
+import { withBase } from "../../lib/paths";
 
 const description =
   "The journey of Luis Coelho Ramos across business operations, Physics, international experience, quantum technologies, and applied AI.";
@@ -87,8 +88,8 @@ const chapters = [
         questions, decisions, and changes of mind that emerge along the way.
       </p>
       <div class="journey-actions">
-        <a href="/work/">Explore my work <span aria-hidden="true">→</span></a>
-        <a href="/notes/">Read the notes <span aria-hidden="true">→</span></a>
+        <a href={withBase("/work/")}>Explore my work <span aria-hidden="true">→</span></a>
+        <a href={withBase("/notes/")}>Read the notes <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>

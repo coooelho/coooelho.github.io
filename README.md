@@ -10,6 +10,42 @@ Rotas editoriais já preparadas:
 O catálogo bibliográfico bilíngue fica em `src/content/reading/`, com um único registro JSON por obra. O modelo em
 `templates/reading-note.md` é reservado às futuras notas autorais em Markdown.
 
+## Publicar artigos
+
+O editor escolhido para escrever os artigos é o Obsidian. O repositório pode ser aberto como um vault no outro notebook e sincronizado pelo GitHub Desktop, sem uso obrigatório do terminal.
+
+Como alternativa, crie um rascunho em português com:
+
+```bash
+npm run article:new -- pt meu-artigo "Título do artigo"
+```
+
+Use `en` no lugar de `pt` para escrever em inglês. O arquivo nasce como rascunho; depois da revisão, mudar `draft: true` para `draft: false` inclui a página, a listagem e o RSS no próximo build. O site ainda não está no ar, então a publicação pública começará somente após a configuração do deploy.
+
+O fluxo completo e todos os campos disponíveis estão em [`PUBLICANDO_ARTIGOS.md`](./PUBLICANDO_ARTIGOS.md).
+
+## Publicação
+
+O site é publicado pelo GitHub Pages. Cada push na branch `main` executa o build do Astro e envia os arquivos estáticos por meio do workflow `.github/workflows/deploy.yml`.
+
+Antes da configuração de um domínio próprio, o endereço previsto é:
+
+```text
+https://coooelho.github.io/PersonalWebSite/
+```
+
+Para fazer a primeira publicação pelo site do GitHub:
+
+1. abra o repositório `PersonalWebSite`;
+2. entre em **Settings → Pages**;
+3. em **Build and deployment → Source**, escolha **GitHub Actions**;
+4. abra a aba **Actions** e execute o workflow **Deploy to GitHub Pages**, ou envie um commit para `main`;
+5. ao final da execução, abra o endereço exibido na etapa `deploy`.
+
+No plano GitHub Free, o repositório precisa ser público para usar o GitHub Pages. Repositórios privados exigem um plano compatível.
+
+Quando houver um domínio, cadastre a variável `PUBLIC_SITE_URL` nas variáveis do repositório e configure o domínio em **Settings → Pages**. O build remove automaticamente o prefixo `/PersonalWebSite` nesse cenário.
+
 ## Desenvolvimento
 
 Requisitos:
@@ -31,8 +67,10 @@ O protótipo original permanece em `prototype/` como referência visual. A imple
 
 ## Configurações pendentes
 
+- ativar GitHub Pages com GitHub Actions nas configurações do repositório;
+- enviar a versão atual para a branch `main` e validar a primeira publicação;
 - comprar o domínio pessoal;
-- copiar `.env.example` para `.env` e preencher `PUBLIC_SITE_URL`;
+- depois da compra, cadastrar `PUBLIC_SITE_URL` como variável do repositório;
 - decidir o e-mail público;
 - fotografia principal integrada; `IMG_5361.JPG` permanece fora da publicação por apresentar marcas no fundo;
 - ativar a newsletter somente depois de configurar o provedor em `src/config/site.ts`;

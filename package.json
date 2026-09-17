@@ -8,9 +8,11 @@
     "start": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
-    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check"
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "article:new": "node scripts/new-article.mjs"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "latest",
     "astro": "latest"
   },

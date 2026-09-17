@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import { site } from "../../config/site";
+import { withBase } from "../../lib/paths";
 
 const description =
   "Luis Coelho Ramos works across AI for restaurant operations at PedeAqui and international strategy for quantum technologies at ICTQ Foton.";
@@ -108,7 +109,7 @@ const description =
       <p class="eyebrow">Applied Frontier</p>
       <h2 id="work-next-title">From practice to notes.</h2>
       <p>I use this space to examine what technology changes—and what it still cannot solve—in real organizations.</p>
-      <a href="/notes/">Read the notes <span aria-hidden="true">→</span></a>
+      <a href={withBase("/notes/")}>Read the notes <span aria-hidden="true">→</span></a>
     </section>
   </main>
 </BaseLayout>

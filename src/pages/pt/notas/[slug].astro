@@ -1,0 +1,31 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import ArticleLayout from "../../../layouts/ArticleLayout.astro";
+import { findTranslation, getNotePath, getNoteSlug } from "../../../lib/notes";
+
+export async function getStaticPaths() {
+  const notes = await getCollection("notes", ({ data }) => !data.draft);
+
+  return notes
+    .filter((note) => note.data.language === "pt-BR")
+    .map((note) => {
+      const translation = findTranslation(note, notes);
+      return {
+        params: { slug: getNoteSlug(note) },
+        props: {
+          note,
+          alternatePath: translation ? getNotePath(translation) : "/notes/",
+        },
+      };
+    });
+}
+
+interface Props {
+  note: CollectionEntry<"notes">;
+  alternatePath: string;
+}
+
+const { note, alternatePath } = Astro.props;
+---
+
+<ArticleLayout note={note} alternatePath={alternatePath} />

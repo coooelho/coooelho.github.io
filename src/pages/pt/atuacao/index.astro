@@ -2,6 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SiteHeader from "../../../components/SiteHeader.astro";
 import { site } from "../../../config/site";
+import { withBase } from "../../../lib/paths";
 
 const description =
   "Luis Coelho Ramos atua com IA para operações de restaurantes no PedeAqui e estratégia internacional para tecnologias quânticas no ICTQ Foton.";
@@ -108,7 +109,7 @@ const description =
       <p class="eyebrow">Fronteira Aplicada</p>
       <h2 id="work-next-title">Da prática às notas.</h2>
       <p>Uso este espaço para examinar o que a tecnologia transforma — e o que ainda não consegue resolver — em organizações reais.</p>
-      <a href="/pt/notas/">Ler as notas <span aria-hidden="true">→</span></a>
+      <a href={withBase("/pt/notas/")}>Ler as notas <span aria-hidden="true">→</span></a>
     </section>
   </main>
 </BaseLayout>

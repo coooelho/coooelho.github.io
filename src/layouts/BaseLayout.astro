@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import SiteFooter from "../components/SiteFooter.astro";
+import { withBase } from "../lib/paths";
 
 interface Props {
   lang: "en" | "pt-BR";
@@ -12,6 +13,9 @@ interface Props {
 
 const { lang, title, description, alternatePath, robots } = Astro.props;
 const isEnglish = lang === "en";
+const feedPath = withBase(isEnglish ? "/rss.xml" : "/pt/rss.xml");
+const alternateUrl = alternatePath ? withBase(alternatePath) : undefined;
+const canonicalUrl = Astro.site ? new URL(withBase(Astro.url.pathname), Astro.site) : undefined;
 ---
 
 <!doctype html>
@@ -22,7 +26,9 @@ const isEnglish = lang === "en";
     <meta name="description" content={description} />
     {robots && <meta name="robots" content={robots} />}
     <meta name="generator" content={Astro.generator} />
-    {alternatePath && <link rel="alternate" hreflang={isEnglish ? "pt-BR" : "en"} href={alternatePath} />}
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {alternateUrl && <link rel="alternate" hreflang={isEnglish ? "pt-BR" : "en"} href={alternateUrl} />}
+    <link rel="alternate" type="application/rss+xml" title={isEnglish ? "Applied Frontier" : "Fronteira Aplicada"} href={feedPath} />
     <title>{title}</title>
   </head>
   <body>

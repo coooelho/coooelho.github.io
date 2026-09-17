@@ -4,6 +4,7 @@ import portrait from "../../../assets/luis-coelho-ramos-portrait.jpg";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SiteHeader from "../../../components/SiteHeader.astro";
 import { site } from "../../../config/site";
+import { withBase } from "../../../lib/paths";
 
 const description =
   "Sobre Luis Coelho Ramos: fundador e co-CEO do PedeAqui, responsável pela estratégia internacional do ICTQ Foton e autor na interseção entre ciência, tecnologia e negócios.";
@@ -53,7 +54,7 @@ const description =
               financiamento e aproximação entre tecnologias quânticas, ecossistemas e mercados globais.
             </p>
           </div>
-          <a class="about-link" href="/pt/atuacao/">Conheça minha atuação <span aria-hidden="true">→</span></a>
+          <a class="about-link" href={withBase("/pt/atuacao/")}>Conheça minha atuação <span aria-hidden="true">→</span></a>
         </div>
       </section>
 
@@ -105,7 +106,7 @@ const description =
               duradouros do ruído tecnológico.
             </p>
           </div>
-          <a class="about-link" href="/pt/notas/">Ler as notas <span aria-hidden="true">→</span></a>
+          <a class="about-link" href={withBase("/pt/notas/")}>Ler as notas <span aria-hidden="true">→</span></a>
         </div>
       </section>
     </div>

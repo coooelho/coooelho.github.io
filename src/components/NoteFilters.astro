@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../lib/paths";
+
 interface Props {
   lang: "en" | "pt-BR";
 }
@@ -36,7 +38,7 @@ const filters = isEnglish
       ))
     }
   </div>
-  <a href={isEnglish ? "/notes/reading/" : "/pt/notas/leituras/"}>{isEnglish ? "Reading" : "Leituras"}</a>
+  <a href={withBase(isEnglish ? "/notes/reading/" : "/pt/notas/leituras/")}>{isEnglish ? "Reading" : "Leituras"}</a>
   <p class="visually-hidden" data-note-filter-status aria-live="polite"></p>
 </div>
 

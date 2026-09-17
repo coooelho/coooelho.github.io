@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import NoteFilters from "../../components/NoteFilters.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import { site } from "../../config/site";
+import { getCategoryLabel, getFormatLabel, getNoteDate, getNotePath } from "../../lib/notes";
 
 const notes = (await getCollection("notes", ({ data }) => !data.draft && data.language === "en")).sort(
   (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
@@ -28,11 +29,11 @@ const notes = (await getCollection("notes", ({ data }) => !data.draft && data.la
       {
         notes.map((note) => (
             <article class="archive-item" data-note-category={note.data.category}>
-              <p>{note.data.category} · {note.data.format}</p>
-              <h2>{note.data.title}</h2>
+              <p>{getCategoryLabel(note)} · {getFormatLabel(note)}</p>
+              <h2><a href={getNotePath(note)}>{note.data.title}</a></h2>
               <p>{note.data.description}</p>
               <time datetime={note.data.publishedAt.toISOString()}>
-                {note.data.publishedAt.toLocaleDateString("en", { dateStyle: "long" })}
+                {getNoteDate(note)}
               </time>
             </article>
           ))

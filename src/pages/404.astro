@@ -1,6 +1,7 @@
 ---
 import { site } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/paths";
 
 const description = "Page not found. Página não encontrada.";
 ---
@@ -12,7 +13,7 @@ const description = "Page not found. Página não encontrada.";
   robots="noindex, follow"
 >
   <header class="site-header shell not-found-header">
-    <a class="brand" href="/">{site.publicName}</a>
+    <a class="brand" href={withBase("/")}>{site.publicName}</a>
     <nav class="language-nav" aria-label="Language / Idioma">
       <a href="#portugues" lang="pt-BR">PT</a>
       <span aria-hidden="true">/</span>
@@ -33,9 +34,9 @@ const description = "Page not found. Página não encontrada.";
         <h2 id="not-found-english">This address does not lead to a published page.</h2>
         <p>The link may be outdated, or the page may have moved.</p>
         <nav class="not-found-links" aria-label="Continue in English">
-          <a href="/">Home</a>
-          <a href="/work/">Work</a>
-          <a href="/notes/">Notes</a>
+          <a href={withBase("/")}>Home</a>
+          <a href={withBase("/work/")}>Work</a>
+          <a href={withBase("/notes/")}>Notes</a>
         </nav>
       </section>
 
@@ -44,9 +45,9 @@ const description = "Page not found. Página não encontrada.";
         <h2 id="not-found-portuguese">Este endereço não leva a uma página publicada.</h2>
         <p>O link pode estar desatualizado ou a página pode ter mudado de lugar.</p>
         <nav class="not-found-links" aria-label="Continuar em português">
-          <a href="/pt/">Início</a>
-          <a href="/pt/atuacao/">Atuação</a>
-          <a href="/pt/notas/">Notas</a>
+          <a href={withBase("/pt/")}>Início</a>
+          <a href={withBase("/pt/atuacao/")}>Atuação</a>
+          <a href={withBase("/pt/notas/")}>Notas</a>
         </nav>
       </section>
     </div>

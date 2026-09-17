@@ -2,6 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SiteHeader from "../../../components/SiteHeader.astro";
 import { site } from "../../../config/site";
+import { withBase } from "../../../lib/paths";
 
 const description =
   "A trajetória de Luis Coelho Ramos entre operações empresariais, Física, experiências internacionais, tecnologias quânticas e inteligência artificial aplicada.";
@@ -87,8 +88,8 @@ const chapters = [
         perguntas, decisões e mudanças de opinião que surgem ao longo do percurso.
       </p>
       <div class="journey-actions">
-        <a href="/pt/atuacao/">Conheça minha atuação <span aria-hidden="true">→</span></a>
-        <a href="/pt/notas/">Leia as notas <span aria-hidden="true">→</span></a>
+        <a href={withBase("/pt/atuacao/")}>Conheça minha atuação <span aria-hidden="true">→</span></a>
+        <a href={withBase("/pt/notas/")}>Leia as notas <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>

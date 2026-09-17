@@ -4,6 +4,7 @@ import portrait from "../../assets/luis-coelho-ramos-portrait.jpg";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import { site } from "../../config/site";
+import { withBase } from "../../lib/paths";
 
 const description =
   "About Luis Coelho Ramos: founder and Co-CEO of PedeAqui, international strategy leader at ICTQ Foton, and writer at the intersection of science, technology, and business.";
@@ -53,7 +54,7 @@ const description =
               pathways that connect quantum technologies with global ecosystems and markets.
             </p>
           </div>
-          <a class="about-link" href="/work/">Explore my work <span aria-hidden="true">→</span></a>
+          <a class="about-link" href={withBase("/work/")}>Explore my work <span aria-hidden="true">→</span></a>
         </div>
       </section>
 
@@ -105,7 +106,7 @@ const description =
               signals from technological noise.
             </p>
           </div>
-          <a class="about-link" href="/notes/">Read the notes <span aria-hidden="true">→</span></a>
+          <a class="about-link" href={withBase("/notes/")}>Read the notes <span aria-hidden="true">→</span></a>
         </div>
       </section>
     </div>
